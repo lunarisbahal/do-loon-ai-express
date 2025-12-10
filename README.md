@@ -42,3 +42,8 @@ Bu şu anlama gelir:
 Bu döngünün kilit cümlesi:
 
 > **“Lunaris, bize ne yaptın?”**
+
+---
+
+# 🕯 BÖLÜM BAŞLIKLARINDAKİ GİZLİ KOD  
+
