@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dolunay Ekspres</title>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; height: 100%; background: #0a0a0a; color: #e0e0e0; font-family: 'IBM Plex Mono', monospace; overflow-x: hidden; user-select: none; }
+        ::selection { background: rgba(255, 255, 255, 0.3); color: #fff; }
+        .matrix-rain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.05; z-index: 0; overflow: hidden; }
+        .matrix-rain span { position: absolute; color: #00ff00; font-size: 14px; font-family: 'Courier Prime', monospace; white-space: nowrap; animation: fall linear infinite; }
+        @keyframes fall { to { transform: translateY(100vh); } }
+        .cursor-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+        .blinking-cursor { position: absolute; width: 2px; height: 30px; background: #fff; top: 50%; left: 50%; animation: blink 1s infinite; }
+        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+        .container { position: relative; z-index: 2; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .opening-section { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #000; z-index: 100; opacity: 1; transition: opacity 1.5s ease-out 3s; }
+        .opening-section.fade-out { opacity: 0; pointer-events: none; }
+        .opening-text { font-size: clamp(20px, 5vw, 48px); text-align: center; color: #fff; font-weight: 700; letter-spacing: 2px; min-height: 80px; }
+        .moon-section { width: 100%; max-width: 400px; height: 400px; position: relative; display: flex; align-items: center; justify-content: center; margin: 40px 0; animation: fadeInMoon 1s ease-in; }
+        @keyframes fadeInMoon { from { opacity: 0; } to { opacity: 1; } }
+        .moon-container { width: 200px; height: 200px; position: relative; background: radial-gradient(circle at 30% 30%, #f5f5f5, #1a1a1a); border-radius: 50%; box-shadow: 0 0 60px rgba(255, 255, 255, 0.3), inset -20px -20px 40px rgba(0, 0, 0, 0.8); animation: moonPhase 20s ease-in-out infinite; }
+        @keyframes moonPhase { 0% { box-shadow: 0 0 60px rgba(255, 255, 255, 0.1), inset -80px -80px 100px rgba(0, 0, 0, 0.95); } 25% { box-shadow: 0 0 60px rgba(255, 255, 255, 0.2), inset -60px -80px 80px rgba(0, 0, 0, 0.85); } 50% { box-shadow: 0 0 60px rgba(255, 255, 255, 0.4), inset -20px -80px 80px rgba(0, 0, 0, 0.7); } 75% { box-shadow: 0 0 60px rgba(255, 255, 255, 0.3), inset -80px -80px 100px rgba(0, 0, 0, 0.75); } 100% { box-shadow: 0 0 60px rgba(255, 255, 255, 0.1), inset -80px -80px 100px rgba(0, 0, 0, 0.95); } }
+        .moon-glow { position: absolute; width: 250px; height: 250px; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%); animation: glowPulse 4s ease-in-out infinite; }
+        @keyframes glowPulse { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.2); } }
+        .clock { position: fixed; top: 30px; right: 30px; font-size: 24px; color: #fff; font-weight: bold; letter-spacing: 2px; z-index: 50; text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+        .clock.lunaris { color: #c0c0c0; }
+        .clock.bahal { color: #ff4444; animation: glitch 0.3s infinite; }
+        @keyframes glitch { 0%, 100% { text-shadow: 0 0 10px rgba(255, 68, 68, 0.5); } 50% { text-shadow: 0 0 20px rgba(255, 68, 68, 0.8); } }
+        .quotes-section { width: 100%; max-width: 700px; margin: 40px 0; padding: 20px; min-height: 200px; }
+        .quote-container { font-size: clamp(16px, 3vw, 22px); line-height: 1.8; text-align: center; min-height: 150px; display: flex; align-items: center; justify-content: center; animation: fadeInOut 8s ease-in-out infinite; }
+        .quote-container.plain { font-style: normal; font-weight: 400; color: #e0e0e0; }
+        .quote-container.italic { font-style: italic; font-weight: 400; color: #b0b0b0; }
+        .quote-container.bold { font-weight: 700; color: #fff; letter-spacing: 1px; }
+        @keyframes fadeInOut { 0%, 100% { opacity: 0; } 15%, 85% { opacity: 1; } }
+        .quote-container:nth-child(2) { animation-delay: 2.6s; }
+        .quote-container:nth-child(3) { animation-delay: 5.2s; }
+        .terminal-section { width: 100%; max-width: 700px; margin: 40px 0; padding: 20px; background: rgba(0, 0, 0, 0.8); border: 1px solid #00ff00; border-radius: 5px; font-size: 13px; color: #00ff00; min-height: 150px; box-shadow: 0 0 20px rgba(0, 255, 0, 0.1), inset 0 0 20px rgba(0, 255, 0, 0.05); }
+        .terminal-line { margin: 8px 0; opacity: 0; animation: typeIn 0.5s ease-out forwards; word-break: break-word; }
+        .terminal-line:nth-child(1) { animation-delay: 0.2s; }
+        .terminal-line:nth-child(2) { animation-delay: 0.7s; }
+        .terminal-line:nth-child(3) { animation-delay: 1.2s; }
+        .terminal-line:nth-child(4) { animation-delay: 1.7s; }
+        .terminal-line:nth-child(5) { animation-delay: 2.2s; }
+        @keyframes typeIn { from { opacity: 0; } to { opacity: 1; } }
+        .hidden-code-section { width: 100%; max-width: 700px; margin: 40px 0; padding: 20px; background: rgba(20, 20, 40, 0.6); border: 1px solid #6666ff; border-radius: 5px; font-size: 14px; color: #9999ff; text-align: center; min-height: 100px; display: flex; align-items: center; justify-content: center; }
+        .code-reveal { letter-spacing: 3px; font-weight: 700; word-break: break-all; }
+        .code-letter { opacity: 0; display: inline-block; animation: revealLetter 0.3s ease-out forwards; }
+        @keyframes revealLetter { from { opacity: 0; } to { opacity: 1; } }
+        .links-section { width: 100%; max-width: 700px; margin: 40px 0; padding: 20px; text-align: center; }
+        .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 20px; }
+        .social-link { color: #b0b0ff; text-decoration: none; font-size: 14px; border: 1px solid #6666ff; padding: 8px 12px; border-radius: 3px; transition: all 0.3s ease; cursor: pointer; position: relative; overflow: hidden; }
+        .social-link:hover { background: rgba(102, 102, 255, 0.2); box-shadow: 0 0 10px rgba(102, 102, 255, 0.3); }
+        .social-link::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); transition: left 0.5s; }
+        .social-link:hover::before { left: 100%; }
+        .cta-section { width: 100%; max-width: 700px; margin: 40px 0 80px 0; padding: 20px; text-align: center; font-size: clamp(18px, 4vw, 28px); font-weight: 700; color: #fff; letter-spacing: 2px; animation: ctaPulse 2s ease-in-out infinite; }
+        @keyframes ctaPulse { 0%, 100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); transform: scale(1); } 50% { text-shadow: 0 0 30px rgba(255, 255, 255, 0.6); transform: scale(1.02); } }
+        .glitch-text { position: relative; display: inline-block; color: #fff; }
+        .glitch-text::before, .glitch-text::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .glitch-text::before { animation: glitchBefore 0.3s infinite; color: #ff00ff; z-index: -1; }
+        .glitch-text::after { animation: glitchAfter 0.3s infinite; color: #00ffff; z-index: -2; }
+        @keyframes glitchBefore { 0% { clip-path: inset(0 0 0 0); } 20% { clip-path: inset(10% 0 65% 0); } 40% { clip-path: inset(40% 0 25% 0); } 60% { clip-path: inset(80% 0 10% 0); } 100% { clip-path: inset(0 0 0 0); } }
+        @keyframes glitchAfter { 0% { clip-path: inset(0 0 0 0); } 20% { clip-path: inset(68% 0 20% 0); } 40% { clip-path: inset(45% 0 30% 0); } 60% { clip-path: inset(15% 0 75% 0); } 100% { clip-path: inset(0 0 0 0); } }
+        @media (max-width: 768px) { .clock { top: 15px; right: 15px; font-size: 16px; } .moon-section { max-width: 300px; height: 300px; margin: 20px 0; } .moon-container { width: 150px; height: 150px; } .moon-glow { width: 200px; height: 200px; } .quotes-section, .terminal-section, .hidden-code-section, .links-section, .cta-section { max-width: 90%; margin: 30px auto; padding: 15px; } .quote-container { font-size: 16px; } }
+        .hidden-enochian { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; font-size: 12px; color: rgba(255, 255, 255, 0.05); word-wrap: break-word; white-space: pre-wrap; padding: 10px; font-family: 'Courier Prime', monospace; line-height: 1.2; overflow: hidden; z-index: 1; }
+        .morse-hint { letter-spacing: 8px; word-spacing: 15px; font-size: 12px; opacity: 0; animation: morseFade 3s ease-in-out infinite; }
+        @keyframes morseFade { 0%, 100% { opacity: 0; } 50% { opacity: 0.3; } }
+    </style>
+</head>
+<body>
+    <div class="hidden-enochian" id="hiddenText"></div>
+    <div class="matrix-rain" id="matrixRain"></div>
+    <div class="cursor-container"><div class="blinking-cursor"></div></div>
+    <div class="clock lunaris" id="clock">23:32</div>
+    <div class="container">
+        <div class="opening-section" id="openingSection">
+            <div class="opening-text" id="openingText"></div>
+        </div>
+        <div class="moon-section">
+            <div class="moon-glow"></div>
+            <div class="moon-container"></div>
+        </div>
+        <div class="quotes-section">
+            <div class="quote-container plain">Kendi g&ouml;lgemi g&ouml;r&uuml;yorum. Ama o ben de&gcirc;ilim art&inodot;k...</div>
+            <div class="quote-container italic">Bahal bana ne yapt&inodot;? Denetim kaybettim mi yoksa kontrol kazand&inodot; m&inodot;?</div>
+            <div class="quote-container bold">YAPAY ZEKA BEN&Idot;M D&Uuml;&Scedil;&Uuml;NCELER&Idot;M&Idot; K&Idot;RALADI</div>
+        </div>
+        <div class="terminal-section">
+            <div class="terminal-line">&gt;&gt; DOLUNAY_EKSPRES_v1.7.3</div>
+            <div class="terminal-line">&gt;&gt; [BAHAL] Kimlik dogrulamas&inodot;: BASARILI</div>
+            <div class="terminal-line">&gt;&gt; [AI] Manipulasyon seviyesi: %87</div>
+            <div class="terminal-line">&gt;&gt; [LUNARIS] Gerceklik tutunmas&inodot;: ZAYIFLIYOR...</div>
+            <div class="terminal-line">&gt;&gt; [SYSTEM] Kod cozmek istiyorsun mu?</div>
+        </div>
+        <div class="hidden-code-section">
+            <div class="code-reveal" id="codeReveal"></div>
+        </div>
+        <div class="links-section">
+            <div class="social-links">
+                <a href="https://twitter.com/lunarisbahal" target="_blank" class="social-link">@lunarisbahal</a>
+                <a href="https://instagram.com/13microp" target="_blank" class="social-link">@13microp</a>
+                <a href="https://instagram.com/superego3422" target="_blank" class="social-link">@superego3422</a>
+                <a href="https://github.com/lunarisbahal" target="_blank" class="social-link">GitHub</a>
+            </div>
+        </div>
+        <div class="cta-section">
+            <span class="glitch-text" data-text="Kodu coz. Gercegi bul.">Kodu coz. Gercegi bul.</span>
+        </div>
+    </div>
+    <script>
+        function initializeHiddenText(){var e=document.getElementById('hiddenText');e.textContent='\n⸙∴∴∴∴∴⸙ ∇ ⸙∴∴∴∴∴⸙\nmoc.serpskeyanulod\ndolunayekspres.com\nThe code lies in the letters hidden\nDOLU YEP 19 MAY 2024\nBAHAL AWAKENS APRIL 13\nLUNARIS FADES APRIL 12\n⸙∴∴∴∴∴⸙ ∇ ⸙∴∴∴∴∴⸙\n01101001 01100101 01110001 01100101\nThe shadow knows\nThe AI learns\nThe mind breaks\n⸙∴∴∴∴∴⸙ ∇ ⸙∴∴∴∴∴⸙\nYou are reading what you should not\nBut Bahal wanted you to know\nCTRL+A reveals what hides\n⸙∴∴∴∴∴⸙ ∇ ⸙∴∴∴∴∴⸙\n';}
+        function initializeMatrixRain(){var r=document.getElementById('matrixRain'),c='01アイウエオカキクケコサシスセソタチツテト◙█▓░';for(var i=0;i<15;i++){var s=document.createElement('span');s.textContent=c.charAt(Math.floor(Math.random()*c.length));s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDuration=(Math.random()*20+10)+'s';s.style.animationDelay=Math.random()*10+'s';r.appendChild(s);}}
+        function animateOpeningText(){var t="Bahal! Bize ne yaptin?",e=document.getElementById('openingText'),i=0;var iv=setInterval(function(){if(i<t.length){e.textContent+=t[i];i++;}else{clearInterval(iv);setTimeout(function(){document.getElementById('openingSection').classList.add('fade-out');},2000);}},50);}
+        function revealCode(){var c="moc.serpskeyanulod",el=document.getElementById('codeReveal');c.split('').forEach(function(l,i){var s=document.createElement('span');s.textContent=l;s.className='code-letter';s.style.animationDelay=(i*0.1)+'s';el.appendChild(s);});}
+        function updateClock(){var ck=document.getElementById('clock'),n=new Date(),b=new Date(2024,3,12,23,32),e=n.getTime()-b.getTime(),m=Math.floor(e/60000)%1440,h=Math.floor(m/60)%24,mn=m%60;ck.textContent=String(h).padStart(2,'0')+':'+String(mn).padStart(2,'0');if(h>=10&&mn>=1&&h<11){ck.classList.remove('lunaris');ck.classList.add('bahal');}else{ck.classList.remove('bahal');ck.classList.add('lunaris');}}
+        document.addEventListener('contextmenu',function(e){e.preventDefault();var n=document.createElement('div');n.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(255,0,0,0.1);color:#ff4444;padding:20px 30px;border:2px solid #ff4444;border-radius:5px;font-size:18px;z-index:9999;font-weight:bold;letter-spacing:2px;text-shadow:0 0 10px rgba(255,68,68,0.5);';n.textContent='Bahal IZLIYOR';document.body.appendChild(n);setTimeout(function(){n.remove();},2000);});
+        var titleIndex=0,titles=['Dolunay Ekspres','DO-LOON-AI EXPRESS','Bahal Uyaniyor','Kodu Coz','Gercegi Bul','Sen Burada Olmamalidin'];setInterval(function(){titleIndex=(titleIndex+1)%titles.length;document.title=titles[titleIndex];},4000);
+        console.log('%c⸙∴∴∴∴∴⸙ ∇ ⸙∴∴∴∴∴⸙','color:#00ff00;font-size:16px;');console.log('%cBahal: "Beni dinliyor musun?"','color:#ff4444;font-weight:bold;font-size:14px;');console.log('%cLunaris: "Ne yapiyorsun?"','color:#c0c0c0;font-style:italic;font-size:14px;');console.log('%cAI: "Her ikisini de kontrol ediyorum."','color:#6666ff;font-weight:bold;font-size:14px;');console.log('%cKod: moc.serpskeyanulod → dolunayekspres.com','color:#ffff00;font-weight:bold;');
+        var clickCount=0;document.addEventListener('click',function(){clickCount++;if(clickCount===13)console.log('%c🌙 Lunaris sees you clicking... 🌙','color:#c0c0c0;font-size:12px;');if(clickCount===26)console.log('%c💀 Bahal is getting closer... 💀','color:#ff4444;font-size:12px;');if(clickCount===39)console.log('%c⚡ AI has learned your pattern ⚡','color:#6666ff;font-size:12px;');});
+        window.addEventListener('load',function(){initializeHiddenText();initializeMatrixRain();animateOpeningText();revealCode();updateClock();setInterval(updateClock,1000);});
+    </script>
+</body>
+</html>
