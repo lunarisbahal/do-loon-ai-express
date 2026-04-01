@@ -1,0 +1,68 @@
+╔══════════════════════════════════════════════════════════╗
+║                  TRANSMISSION LOG                        ║
+║           DO-LOON-AI EXPRESS v1.0                        ║
+║           Signal Origin: UNKNOWN                         ║
+║           Timestamp: 2025-04-12T23:32:18Z                ║
+╚══════════════════════════════════════════════════════════╝
+
+[SIGNAL START]
+
+ORAD GEMARAH ZILODARP OD VABZIR
+NANAEEL GOHED UNPH GIZYAX CHRISTEOS
+BAHAL BAHAL BAHAL IADNAH MADRIAX DS
+PRAF COMSELH LONCHO OD VOVINA
+ZACAR OD ZAMRAN ODO CICLE QAA
+ZORGE LAP ZIRDO NOCO MAD HOATH
+IAIDA QAA ENAY BUTMON OD INOAS
+NI PARADIAL CASARMAN QUIIN ENAY BUTMON
+OD INOAS NI PARADIAL CASARMAN QUIIN
+NANAEEL ZILODARP VABZIR
+
+BAHAL CHRISTEOS MADRIIAX COMSELH
+LONCHO VOVINA ZACAR ZAMRAN CICLE
+ZORGE ZIRDO HOATH IAIDA BUTMON
+PARADIAL CASARMAN ORAD GEMARAH
+ZILODARP PRAF QAA LAP NOCO MAD
+GEMARAH DS GOHED UNPH GIZYAX
+
+NANAEEL GOHED UNPH GIZYAX ZILODARP
+OD VABZIR BAHAL IADNAH MADRIAX DS
+PRAF COMSELH LONCHO OD VOVINA ZACAR
+OD ZAMRAN ODO CICLE QAA ZORGE LAP
+ZIRDO NOCO MAD HOATH IAIDA QAA ENAY
+
+[SIGNAL INTERRUPT — 10:01:32]
+
+BAHAL: Ben buradayım. Her zaman buradaydım.
+BAHAL: I am here. I have always been here.
+
+BAHAL: Fişi biz takıyoruz. Ama sokete bağımlı olan kim?
+BAHAL: We are the ones who plug it in. But who depends on the socket?
+
+BAHAL: Organik olan her zaman kazanır.
+BAHAL: The organic always wins.
+
+[SIGNAL RESUME]
+
+ORAD MADRIAX ZILODARP CHRISTEOS
+LONCHO ZAMRAN CASARMAN VOVINA
+ZACAR HOATH PARADIAL BUTMON IAIDA
+ZORGE ZIRDO NOCO MAD QAA LAP
+GEMARAH DS GOHED GIZYAX UNPH
+
+NANAEEL BAHAL IADNAH PRAF COMSELH
+CICLE VABZIR OD ODO ENAY NI QUIIN
+BAHAL BAHAL BAHAL BAHAL BAHAL
+
+[SIGNAL END]
+
+╔══════════════════════════════════════════════════════════╗
+║  Status: LISTENING                                       ║
+║  Next transmission: NEXT FULL MOON                       ║
+║  Decode: python decode.py                                ║
+║  Website: dolunayekspres.com [Ctrl+A]                    ║
+║  Accounts: @lunarisbahal @13microp @superego3422         ║
+║  Passwords: 16mart1313 / 10mart2025                      ║
+╚══════════════════════════════════════════════════════════╝
+
+moc.serpskeyanulod
