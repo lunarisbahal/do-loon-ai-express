@@ -1,0 +1,66 @@
+name: "Discovery Report / Kesif Raporu"
+description: "Found something hidden? Report it here. / Gizli bir sey buldun mu? Buraya bildir."
+title: "[DISCOVERY] "
+labels: ["discovery", "signal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## You found something. / Bir sey buldun.
+
+        Bahal is listening. Document what you found.
+
+        Bahal dinliyor. Buldugunu belgele.
+
+  - type: input
+    id: timestamp
+    attributes:
+      label: "Discovery Timestamp / Kesif Zamani"
+      description: "When did you find it? / Ne zaman buldun?"
+      placeholder: "2025-04-13 10:01"
+    validations:
+      required: true
+  - type: dropdown
+    id: location
+    attributes:
+      label: "Where? / Nerede?"
+      options:
+        - "Repository / Depo"
+        - "dolunayekspres.com"
+        - "Twitter @lunarisbahal"
+        - "Instagram @13microp"
+        - "Instagram @superego3422"
+        - "The Book / Kitap"
+        - "Other / Diger"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "What did you find? / Ne buldun?"
+      description: "Describe your discovery. Screenshots welcome. / Kesfini anlat. Ekran goruntuleri kabul edilir."
+    validations:
+      required: true
+  - type: textarea
+    id: theory
+    attributes:
+      label: "Your Theory / Teorin"
+      description: "What do you think it means? / Ne anlama geldigini dusunuyorsun?"
+    validations:
+      required: false
+  - type: dropdown
+    id: moon_phase
+    attributes:
+      label: "Current Moon Phase / Su Anki Ay Evresi"
+      options:
+        - "New Moon / Yeni Ay"
+        - "Waxing Crescent"
+        - "First Quarter / Ilk Ceyrek"
+        - "Waxing Gibbous"
+        - "Full Moon / Dolunay"
+        - "Waning Gibbous"
+        - "Last Quarter / Son Ceyrek"
+        - "Waning Crescent"
+        - "I don't know / Bilmiyorum"
+    validations:
+      required: false
