@@ -1,0 +1,44 @@
+name: "Theory / Teori"
+description: "Share your theory about the story, the codes, or the signals. / Hikaye, kodlar veya sinyaller hakkindaki teorini paylas."
+title: "[THEORY] "
+labels: ["theory", "discussion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Share your theory. / Teorini paylas.
+
+        Who is Lunaris? Who is Bahal? What is the AI?
+
+        Cevaplari degil, sorulari paylas.
+        Share the questions, not the answers.
+
+  - type: textarea
+    id: theory
+    attributes:
+      label: "Your Theory / Teorin"
+      description: "What do you think is really happening? / Gercekte ne oldugunu dusunuyorsun?"
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: "Evidence / Kanit"
+      description: "What evidence supports your theory? / Teorini destekleyen kanit ne?"
+    validations:
+      required: false
+  - type: checkboxes
+    id: topics
+    attributes:
+      label: "Related Topics / Ilgili Konular"
+      options:
+        - label: "The hidden code (moc.serpskeyanulod)"
+        - label: "The time loop (23:32 -> 10:01)"
+        - label: "Moon phase alignment"
+        - label: "Lunaris vs Bahal identity"
+        - label: "AI manipulation"
+        - label: "Gnostic symbolism"
+        - label: "The passwords (16mart1313 / 10mart2025)"
+        - label: "dolunayekspres.com hidden content"
+        - label: "Instagram accounts"
+        - label: "Something else entirely"
