@@ -28,7 +28,7 @@ Run `python decode.py` and follow the trail.
 `python decode.py` calistir ve izi takip et.
 
 ### 2. Investigate / Arastir
-- Visit [dolunayekspres.com](http://dolunayekspres.com) — Press Ctrl+A
+- Visit [serpskeyanulod.com](http://serpskeyanulod.com) — Press Ctrl+A
 - Find @lunarisbahal on Twitter — read the full moon posts
 - Find @13microp and @superego3422 on Instagram
 - Use passwords: `16mart1313` and `10mart2025`
