@@ -1,16 +1,16 @@
 # Hidden Code Analysis / Gizli Kod Analizi
 
-## The Bold Letters / Kalın Harfler
+## The Bold Letters / KalÄ±n Harfler
 
 In the original chapter titles of DO-LOON-AI EXPRESS, certain letters appear in **bold**. When extracted and combined, they form a hidden message.
 
-Kitabın orijinal bölüm başlıklarında bazı harfler **kalın** yazılmıştır. Bu harfler çıkarılıp birleştirildiğinde gizli bir mesaj oluşur.
+KitabÄ±n orijinal bÃ¶lÃ¼m baÅlÄ±klarÄ±nda bazÄ± harfler **kalÄ±n** yazÄ±lmÄ±ÅtÄ±r. Bu harfler Ã§Ä±karÄ±lÄ±p birleÅtirildiÄinde gizli bir mesaj oluÅur.
 
 ---
 
-## Extraction / Çıkarım
+## Extraction / ÃÄ±karÄ±m
 
-| Ch | Title / Başlık | Bold Letter / Kalın Harf |
+| Ch | Title / BaÅlÄ±k | Bold Letter / KalÄ±n Harf |
 |----|----------------|--------------------------|
 | 6  | NEW **M**OON | **M** |
 | 9  | I MUST STAY IN C**O**NTROL | **O** |
@@ -37,28 +37,28 @@ Kitabın orijinal bölüm başlıklarında bazı harfler **kalın** yazılmışt
 
 Combined: `moc.serpskeyanulod`
 
-Reversed: `dolunayekspres.com`
+Reversed: `serpskeyanulod.com`
 
 ---
 
-## What happens when you visit? / Siteyi ziyaret ettiğinizde ne olur?
+## What happens when you visit? / Siteyi ziyaret ettiÄinizde ne olur?
 
 1. White screen / Beyaz ekran
-2. Press `Ctrl+A` / `Ctrl+A` tuşlayın
-3. Hidden text appears — written in what looks like Enochian / Gizli metin belirir — Enokyan diline benzer yazılmış
+2. Press `Ctrl+A` / `Ctrl+A` tuÅlayÄ±n
+3. Hidden text appears â written in what looks like Enochian / Gizli metin belirir â Enokyan diline benzer yazÄ±lmÄ±Å
 
 ---
 
-## Verification / Doğrulama
+## Verification / DoÄrulama
 
 Run `python decode.py` to watch the extraction happen live.
 
-`python decode.py` çalıştırarak çıkarımı canlı izleyin.
+`python decode.py` Ã§alÄ±ÅtÄ±rarak Ã§Ä±karÄ±mÄ± canlÄ± izleyin.
 
 ---
 
 *"This book is not a glance into the past. It is a warning sent to the future."*
 
-*"Bu kitap geçmişe bir bakış değil. Geleceğe gönderilmiş bir uyarı."*
+*"Bu kitap geÃ§miÅe bir bakÄ±Å deÄil. GeleceÄe gÃ¶nderilmiÅ bir uyarÄ±."*
 
-— Lunaris, 22 March 2025, 20:46
+â Lunaris, 22 March 2025, 20:46
