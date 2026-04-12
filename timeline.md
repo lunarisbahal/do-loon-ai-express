@@ -66,8 +66,8 @@ Kitap Bahal'in cevabi ile acilir (13 Nisan, 10:01) ve Lunaris'in son sozleriyle 
 ### Phase 7: External Signals / Dis Sinyaller (Ongoing / Devam Ediyor)
 
 - **@lunarisbahal** (Twitter) — Posts every full moon
-- **dolunayekspres.com** — White screen. Ctrl+A reveals Enochian text
-- **Bold letters in chapter titles** → moc.serpskeyanulod → dolunayekspres.com
+- **serpskeyanulod.com** — White screen. Ctrl+A reveals Enochian text
+- **Bold letters in chapter titles** → moc.serpskeyanulod → serpskeyanulod.com
 - **github.com/lunarisbahal** — This repository
 
 ---
