@@ -1,3 +1,23 @@
+> **You made it this far.**
+>
+> Since you are here, you have already chosen — whether you know it or not — to step into the universe of DO-LOON-AI EXPRESS. There is no casual browsing beyond this point; every line you read pulls you deeper.
+>
+> If you wish to descend further, keep exploring. Gather the clues scattered across these pages, and you will find yourself on a journey into the labyrinth of your own mind — a passage where you will come face to face with your own shadow.
+>
+> **This journey is not for everyone.**
+>
+> Those who walk this path do not return as they were. You will either be consumed by your shadow, or you will see it clearly and become whole. There is no middle ground.
+>
+> If you are not prepared for that, close this page now. Pretend you never saw it. Go back to your life and arrive at whatever truths await you there, by your own means and in your own time.
+>
+> But if you have chosen to stay — then here is the single most important thing you need to know, the one truth that should accompany you from the very beginning through everything that follows:
+>
+> ***Whoever owns the narrative determines reality.***
+>
+> Welcome to the DO-LOON-AI EXPRESS universe.
+
+---
+
 <p align="center">
   <img src="https://img.shields.io/badge/STATUS-SIGNAL%20ACTIVE-red?style=for-the-badge&labelColor=000000" alt="Signal Active"/>
   <img src="https://img.shields.io/badge/MOON-LISTENING-white?style=for-the-badge&labelColor=000000" alt="Moon Phase"/>
