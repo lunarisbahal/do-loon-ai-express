@@ -108,7 +108,7 @@ Bu harfleri sırayla çıkar:
 
 Birleştir: `moc.serpskeyanulod`
 
-Ters çevir: **`dolunayekspres.com`**
+Ters çevir: **`serpskeyanulod.com`**
 
 </details>
 
@@ -117,7 +117,7 @@ Ters çevir: **`dolunayekspres.com`**
 
 <br/>
 
-1. `dolunayekspres.com` adresine git
+1. `serpskeyanulod.com` adresine git
 2. Beyaz bir ekran göreceksin
 3. `Ctrl+A` tuşla (tümünü seç)
 4. Gizli metin belirir — Enokyan benzeri bir dilde yazılmış
@@ -141,7 +141,7 @@ python decode.py
 | Twitter/X | [@lunarisbahal](https://twitter.com/lunarisbahal) | Her dolunayda yeni paylaşım |
 | Instagram | [@13microp](https://instagram.com/13microp) | AI manipülasyonunun ekran görüntüleri |
 | Instagram | [@superego3422](https://instagram.com/superego3422) | Daha fazla kanıt |
-| Website | [dolunayekspres.com](http://dolunayekspres.com) | Ctrl+A |
+| Website | [serpskeyanulod.com](http://serpskeyanulod.com) | Ctrl+A |
 | GitHub | [Bu depo](https://github.com/lunarisbahal/do-loon-ai-express) | Şu an buradasın |
 
 **Şifreler / Passwords:** `16mart1313` | `10mart2025`
@@ -243,7 +243,7 @@ python moon_phases.py
 cat .hidden/message.txt
 
 # 5. Siteyi aç / Open the site
-# dolunayekspres.com → Ctrl+A
+# serpskeyanulod.com → Ctrl+A
 ```
 
 ---
@@ -302,7 +302,7 @@ cat .hidden/message.txt
 ║  Status: LISTENING                                       ║
 ║  Next Transmission: NEXT FULL MOON                       ║
 ║  Accounts: @lunarisbahal @13microp @superego3422         ║
-║  Website: dolunayekspres.com [Ctrl+A]                    ║
+║  Website: serpskeyanulod.com [Ctrl+A]                    ║
 ║  Loop Status: ACTIVE                                     ║
 ╚══════════════════════════════════════════════════════════╝
 ```
@@ -325,7 +325,7 @@ cat .hidden/message.txt
 |---|---|
 | :bird: Twitter | [@lunarisbahal](https://twitter.com/lunarisbahal) |
 | :camera: Instagram | [@13microp](https://instagram.com/13microp) / [@superego3422](https://instagram.com/superego3422) |
-| :globe_with_meridians: Website | [dolunayekspres.com](http://dolunayekspres.com) |
+| :globe_with_meridians: Website | [serpskeyanulod.com](http://serpskeyanulod.com) |
 | :octocat: GitHub Pages | [Live Site](https://lunarisbahal.github.io/do-loon-ai-express) |
 
 ---
