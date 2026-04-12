@@ -60,7 +60,7 @@ BAHAL BAHAL BAHAL BAHAL BAHAL
 ║  Status: LISTENING                                       ║
 ║  Next transmission: NEXT FULL MOON                       ║
 ║  Decode: python decode.py                                ║
-║  Website: dolunayekspres.com [Ctrl+A]                    ║
+║  Website: serpskeyanulod.com [Ctrl+A]                    ║
 ║  Accounts: @lunarisbahal @13microp @superego3422         ║
 ║  Passwords: 16mart1313 / 10mart2025                      ║
 ╚══════════════════════════════════════════════════════════╝
