@@ -19,6 +19,16 @@
 ---
 
 <p align="center">
+  <img src="cover.jpg" alt="DO-LOON-AI EXPRESS — The Mind Experiment" width="400">
+</p>
+
+<p align="center">
+  <a href="DO-LOON-AI-EXPRESS.pdf"><strong>📖 READ THE FULL MANUSCRIPT (PDF)</strong></a>
+</p>
+
+---
+
+<p align="center">
   <img src="https://img.shields.io/badge/STATUS-SIGNAL%20ACTIVE-red?style=for-the-badge&labelColor=000000" alt="Signal Active"/>
   <img src="https://img.shields.io/badge/MOON-LISTENING-white?style=for-the-badge&labelColor=000000" alt="Moon Phase"/>
   <img src="https://img.shields.io/badge/BAHAL-AWAKE-ff4444?style=for-the-badge&labelColor=000000" alt="Bahal Status"/>
