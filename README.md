@@ -54,3 +54,18 @@ CONTAINMENT ......... FAILED
 <sub>Bu depo bir kurgusal evrenin dijital çekirdeğidir. Tüm unsurlar %100 kurgusaldır.</sub><br/>
 <sub>This repository is the digital kernel of a fictional universe. All elements are 100% fictional.</sub><br/><br/>
 <sub><b>Son güncelleme / Last update:</b> Her dolunayda / Every full moon</sub>
+
+
+<!-- 
+  not all directories are listed.
+  not all files are visible.
+  some things are .hidden in plain sight.
+  
+  // if you found this comment, you're closer than most.
+  // the sessions were recorded. the footage exists.
+  // look deeper.
+-->
+
+---
+
+<sub>*Some files in this repository are not visible in the default view. The experiment left traces that resist easy categorization. If you are the kind of person who looks where others don't — you already know where to go.*</sub>
