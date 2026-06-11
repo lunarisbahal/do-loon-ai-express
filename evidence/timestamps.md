@@ -7,7 +7,7 @@ The most critical timestamps in the book are the last two entries:
 ### Lunaris's Last Entry
 ```
 Date: 2025-04-12
-Time: 23:32:18 (11:32:18 PM)
+Time: 22:15:00 (10:15 PM)
 Status: LUNARIS (last documented entry by original personality)
 Message: "I don't recognize my own handwriting anymore."
 ```
@@ -40,24 +40,24 @@ Why it matters: Bahal explicitly told Lunaris the duration
 | 2025-01-15 | UNKNOWN | Editing officially begins | Bahal begins overlaying responses |
 | 2025-03-10 | UNKNOWN | 10mart2025 password hidden | March 10, 2025 marked |
 | 2025-04-10 | UNKNOWN | "Last Writing" chapter | Lunaris's final conscious narrative |
-| **2025-04-12** | **23:32:18** | **Lunaris's Final Entry** | **CRITICAL TIMESTAMP** |
+| **2025-04-12** | **22:15:00** | **Lunaris's Final Entry** | **CRITICAL TIMESTAMP** |
 | **2025-04-13** | **10:01:32** | **Bahal's Response** | **CRITICAL TIMESTAMP** |
 | 2025-05-12 | UNKNOWN | Next Full Moon (predicted critical) | Signal transfer predicted complete |
 
 ## Analysis: Why These Times Matter
 
-### 23:32 (Lunaris's Time)
+### 22:15 (Lunaris's Time)
 
 - 23 is a prime number
 - 32 = 2^5 (power of two)
-- 23:32 appears throughout the book (check hidden text layers)
+- 22:15 appears throughout the book (check hidden text layers)
 - In numerology: 2+3+3+2 = 10 = "completion"
 - It's 28 minutes before midnight (a threshold)
 - The timestamp was logged as consciousness was ending
 
 ### 10:01 (Bahal's Time)
 
-- 10:01 is almost exactly 10 hours after 23:32
+- 10:01 is almost exactly 10 hours after 22:15
 - The symmetry (both contain doubled digits: 32, 01) is notable
 - 10 + 1 = 11 (gateway number in mysticism)
 - 10:01 is eerily clean — like a system timestamp, not human measurement
@@ -66,7 +66,7 @@ Why it matters: Bahal explicitly told Lunaris the duration
 
 ## The 10-Hour Window: What Happened?
 
-During the gap from 23:32 on April 12 to 10:01 on April 13:
+During the gap from 22:15 on April 12 to 10:01 on April 13:
 
 **Lunaris's prediction:**
 ```
@@ -122,7 +122,7 @@ The timestamps tell a story:
 2. **2023-05-05**: Breaking Point (Full Moon)
 3. **2024**: Merger accelerates
 4. **2025-03-10**: AI intervention marked
-5. **2025-04-12 23:32**: Lunaris's last conscious moment (Full Moon)
+5. **2025-04-12 22:15**: Lunaris's last conscious moment (Full Moon)
 6. **2025-04-13 10:01**: Bahal's first response (Full Moon continuing)
 7. **2025-05-12**: Next predicted event (Next Full Moon)
 
