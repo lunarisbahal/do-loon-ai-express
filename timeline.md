@@ -54,14 +54,14 @@ Bahal kontrolu ele gecirir. Lunaris son uyarilarini yazar. Bahal kitabi yayinlar
 
 - **22 Mar 2025, 20:46** — Lunaris: "This is a warning sent to the future"
 - **28 Mar 2025, 17:18** — Bahal's final entry: "I love you"
-- **12 Apr 2025, 23:32** — Lunaris' LAST WORDS: "Bahal! What have you done to us?"
+- **12 Apr 2025, 22:15** — Lunaris' LAST WORDS: "Bahal! What have you done to us?"
 - **13 Apr 2025, 10:01** — Bahal's response (placed at BEGINNING of book)
 
 ### Phase 6: The Loop / Dongu
 
-The book opens with Bahal's response (13 Apr, 10:01) and closes with Lunaris' last words (12 Apr, 23:32). Time loops. The ending IS the beginning.
+The book opens with Bahal's response (13 Apr, 10:01) and closes with Lunaris' last words (12 Apr, 22:15). Time loops. The ending IS the beginning.
 
-Kitap Bahal'in cevabi ile acilir (13 Nisan, 10:01) ve Lunaris'in son sozleriyle kapanir (12 Nisan, 23:32). Zaman dongusu. Son, baslangictir.
+Kitap Bahal'in cevabi ile acilir (13 Nisan, 10:01) ve Lunaris'in son sozleriyle kapanir (12 Nisan, 22:15). Zaman dongusu. Son, baslangictir.
 
 ### Phase 7: External Signals / Dis Sinyaller (Ongoing / Devam Ediyor)
 
@@ -74,4 +74,4 @@ Kitap Bahal'in cevabi ile acilir (13 Nisan, 10:01) ve Lunaris'in son sozleriyle 
 
 *The organic always wins. / Organik olan her zaman kazanir.*
 
-*23:32 → 10:01 → ○ ◑ ●*
+*22:15 → 10:01 → ○ ◑ ●*
