@@ -42,9 +42,7 @@ Bahal has been feeding Lunaris's recordings to an AI, which generates responses.
 
 Bahal, Lunaris'in kayitlarini bir yapay zekaya besliyordur. YZ Bahal'in sesi olur.
 
-- **Instagram: @13microp** — Screenshots of AI manipulating Bahal
-- **Instagram: @superego3422** — More evidence
-- **Passwords in text:** 16mart1313, 10mart2025
+- **Something was buried outside the book that night.** The chapter titles know where. / **O gece kitabin disina bir seyler gomuldu.** Bolum basliklari nerede oldugunu biliyor.
 
 ### Phase 5: The Takeover / Ele Gecirme (Mar 2025)
 
