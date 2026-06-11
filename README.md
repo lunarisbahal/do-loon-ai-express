@@ -1,5 +1,13 @@
 # DO•LOON•AI EXPRESS
 
+> ## ⟁ THE MIND EXPERIMENT — ŞİMDİ OYNANABİLİR / NOW PLAYABLE
+>
+> **Rekonstrüksiyon yayında. Kendi zihin haritana gir.** Açık dünya simülasyon · IT-041 · 4 kilit · 7 ritüel · STOP YALDABAOTH
+>
+> ### → [TÜRKÇE OYNA](https://lunarisbahal.github.io/the-mind-experiment/zihin-deneyi-tr.html) · [PLAY IN ENGLISH](https://lunarisbahal.github.io/the-mind-experiment/) ←
+
+
+
 **The experiment concluded. What remains is still transmitting.**
 
 ---
