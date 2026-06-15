@@ -1168,8 +1168,8 @@ function waypoint(){
 
 /* ---------------- Etkileşimler ---------------- */
 function interactTarget(){
-  if(window.W3&&W3.inInterior&&W3.Interior)return W3.Interior.target();
-  if(window.W3&&W3.PORTALS)for(const pg of W3.PORTALS){
+  if(W3&&W3.inInterior&&W3.Interior)return W3.Interior.target();
+  if(W3&&W3.PORTALS)for(const pg of W3.PORTALS){
     if(Math.hypot(S.px-pg.x,S.pz-pg.z)<pg.r)return['☽ '+(GAMELANG==='tr'?esc(pg.name)+' alanına gir':'enter '+esc(pg.name)),()=>W3.Interior.enter(pg.k)];}
   /* v8: bir denek/karakter çok yakındaysa alan etkileşimlerinden ÖNCE o gelir */
   {const ag=W3.agentNear&&W3.agentNear();
@@ -1537,7 +1537,7 @@ const Game={
     setTimeout(()=>{try{if(window.Auto&&!Auto.on&&localStorage.getItem('it041_auto_on')&&Mirror.ready())Auto.toggle();}catch(e){}},2600);
     if(!Mirror.ready())setTimeout(()=>UI.toast('◐ İpucu: Karakterlerle AÇIK UÇLU konuşmak için MENÜ → AYNALAR (tek seferlik kurulum).',7000),12000);
   },
-  toggleMap(){if(this.modal||(window.W3&&W3.inInterior))return;
+  toggleMap(){if(this.modal||(W3&&W3.inInterior))return;
     const w=UI.el('bigmapWrap');
     const open=w.style.display!=='flex';
     w.style.display=open?'flex':'none';
@@ -4122,7 +4122,7 @@ if(HAS3D)(function(){
       if(best){const dn=!!(S.zones&&S.zones[this.cur]&&S.zones[this.cur].done&&S.zones[this.cur].done[best.id]);return[(dn?'✓ ':'◇ ')+(GAMELANG==='tr'?'Bölüm ':'Ch ')+best.ch+' · '+Scene.T(best.t)+(GAMELANG==='tr'?' — performe et':' — perform'),()=>Scene.run(W3.Interior.cur,best.id)];}
       return null;},
   };
-  W3.Interior=Interior;
+  W3.Interior=Interior;if(typeof window!=='undefined')window.W3=W3;
   W3.intLamp=new THREE.PointLight(0xbcd0f0,.7,9,2);W3.intLamp.position.set(0,2.0,0);W3.intLamp.visible=false;player.g.add(W3.intLamp);
   W3.PORTALS=[];W3._portals=[];
   function buildPortal(k,x,z,name){
