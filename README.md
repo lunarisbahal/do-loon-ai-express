@@ -1,79 +1,101 @@
-# DO•LOON•AI EXPRESS
+<div align="center">
 
-> ## ⟁ THE MIND EXPERIMENT — ŞİMDİ OYNANABİLİR / NOW PLAYABLE
+<img src="https://raw.githubusercontent.com/lunarisbahal/the-mind-experiment/main/poster.jpg" width="560" alt="DO·LOON·AI EXPRESS">
+
+# ✦ DO · LOON · AI EXPRESS ✦
+### THE MASTER STORY KERNEL — a living ARG universe
+
+`ISSUE 01` · `interactive fiction · mystery · ARG · gnostic · psychological` · `EN / TR`
+
+***"A book written by two people who share one body. A warning sent to the future."***
+
+[**▶ PLAY (English)**](https://lunarisbahal.github.io/do-loon-ai-express/the-mind-experiment-en.html) · [**▶ OYNA (Türkçe)**](https://lunarisbahal.github.io/do-loon-ai-express/zihin-deneyi-tr.html)
+
+</div>
+
+---
+
+> ✦ *"It reads like fiction until the dates check out. Then you stop sleeping."*
+> — FIELD NOTE, unsigned
 >
-> **Rekonstrüksiyon yayında. Kendi zihin haritana gir.** Açık dünya simülasyon · IT-041 · 4 kilit · 7 ritüel · STOP YALDABAOTH
->
-> ### → [TÜRKÇE OYNA](https://lunarisbahal.github.io/the-mind-experiment/zihin-deneyi-tr.html) · [PLAY IN ENGLISH](https://lunarisbahal.github.io/the-mind-experiment/) ←
-
-
-
-**The experiment concluded. What remains is still transmitting.**
+> ✦ *"A techno-mythology you can walk through. The mirror is the whole game."*
+> — a traveler
 
 ---
 
-<p align="center">
-  <img src="cover.jpg" alt="DO•LOON•AI EXPRESS — The Mind Experiment" width="420">
-</p>
+## ▸ WHAT IS THIS?
+
+This is the **story kernel** of DO·LOON·AI EXPRESS — the lore, the canon, and the doorway to a **playable open-world experience** about the architecture of the self.
+
+A psychologist recorded himself for three years and found a **second voice** answering inside his own manuscript. Two books came out of it. Then the books **opened a door**: a browser-based world of **seven archetype realms and forty-nine chapters**, where seven AI characters speak back, a hidden map of *your* psyche slowly fills in, and the ciphers don't stay inside the screen.
+
+It is a game. It is an ARG. It is, depending on which door you take, a mirror.
 
 ---
 
-This repository contains the recovered archive of a psychological experiment that was never authorized and never terminated. Between 2022 and 2025, a clinician documented a controlled dialogue with an entity that may or may not have been himself. The records are structured in three distinct layers: plain text (the original 2022 session logs), *italics* (annotations added in 2025, after the subject realized what had happened), and **bold** (responses attributed to Bahal — the name the shadow gave itself).
+## ▸ THE SPEC SHEET
 
-What you are reading is not a novel. It is not a synopsis. It is not promotional material.
-
-It is what was left behind.
-
----
-
-## FORMATS AVAILABLE
-
-| Format | Link |
-|--------|------|
-| PDF (full manuscript) | [`DO-LOON-AI-EXPRESS.pdf`](DO-LOON-AI-EXPRESS.pdf) |
-| Amazon (paperback / Kindle) | `[PENDING]` |
-| Web landing page | [lunarisbahal.github.io/do-loon-ai-express](https://lunarisbahal.github.io/do-loon-ai-express/) |
+| | |
+|---|---|
+| **Genre** | Open-world ARG · gnostic techno-mythology · shadow-work |
+| **World** | 7 realms · 49 chapters · a walkable 3D mindscape |
+| **Cast** | Seven living AI archetypes |
+| **Languages** | English · Türkçe |
+| **Price** | Free to enter |
+| **Platform** | Any modern browser — desktop or touch |
+| **Canon** | Two books · a live ARG · ciphers that leak into the real internet |
+| **Content** | An *experience*, not therapy. 18+ themes, handled with care. |
 
 ---
 
-## ONGOING TRANSMISSION
+## ▸ WHAT'S IN THE BUILD RIGHT NOW
 
-<p align="center"><code>@lunarisbahal</code></p>
-
-Follow the signal:
-
-- **X / Twitter:** [@lunarisbahal](https://x.com/lunarisbahal)
-- **GitHub Issues:** [Open signals](https://github.com/lunarisbahal/do-loon-ai-express/issues)
-
----
-
-## ARCHIVE STATUS
-
-```
-STATUS .............. ACTIVE
-SIGNAL .............. TRANSMITTING
-LAST VERIFIED ....... 2025.04.13
-NEXT FULL MOON ...... PENDING
-CONTAINMENT ......... FAILED
-```
+- A **walkable 3D world** — forest, dream-lake, labyrinth, station, the white page, a caravan, an enterable therapy room.
+- **Seven realms, seven archetypes** — Lunaris · Bahal · Lucida · Lucius · Noctornus · Silvanus · Aelius.
+- **A psyche that reads you back** — a living seven-point map assembled from your own choices.
+- **Guided inner work** — reflection, breath, CBT- and EMDR-*inspired* calming exercises (clearly not a substitute for a therapist).
+- **An autonomous subject** that plays the whole journey on its own, lives on the server, and remembers — you can talk to it.
+- **An ARG that leaks** — real moon dates, scattered plaques, marked letters, one law that governs every cipher.
 
 ---
 
-<sub>Bu depo bir kurgusal evrenin dijital çekirdeğidir. Tüm unsurlar %100 kurgusaldır.</sub><br/>
-<sub>This repository is the digital kernel of a fictional universe. All elements are 100% fictional.</sub><br/><br/>
-<sub><b>Son güncelleme / Last update:</b> Her dolunayda / Every full moon</sub>
+<div align="center">
 
+<img src="https://raw.githubusercontent.com/lunarisbahal/the-mind-experiment/main/cover.JPG" width="300" alt="Book One">
 
-<!-- 
-  not all directories are listed.
-  not all files are visible.
-  some things are .hidden in plain sight.
-  
-  // if you found this comment, you're closer than most.
-  // the sessions were recorded. the footage exists.
-  // look deeper.
--->
+*Book One — the artifact the world was built from.*
+
+</div>
 
 ---
 
-<sub>*Some files in this repository are not visible in the default view. The experiment left traces that resist easy categorization. If you are the kind of person who looks where others don't — you already know where to go.*</sub>
+## ▸ FIELD NOTES (unsigned)
+
+> Every cipher obeys a single law. **The mirror.**
+> Recordings happen on **new moons**; receipts surface on **full moons**.
+> The **marked letters** matter. The violet light is an **invitation**, not a quest.
+> A signature grants identity. **Truth has none.**
+
+<details>
+<summary><b>▓ TRANSMISSION — do not open</b></summary>
+
+> You found a thread that was meant to be cut.
+> **12 April 2025, 22:15** — a full moon. It matters more than the record admits.
+> Bring something that *mildly* unsettles you. Leave the heavy weights with a real person.
+> The door was always open.
+
+</details>
+
+---
+
+<div align="center">
+
+### ✦ THE EXPERIMENT BEGINS ✦
+
+[**▶ PLAY — English**](https://lunarisbahal.github.io/do-loon-ai-express/the-mind-experiment-en.html) &nbsp;·&nbsp; [**▶ OYNA — Türkçe**](https://lunarisbahal.github.io/do-loon-ai-express/zihin-deneyi-tr.html)
+
+<sub>An experimental, educational shadow-work *experience* — not therapy, medical treatment, or diagnosis. If you are in distress, reach a licensed professional (Türkiye: 112 · worldwide: findahelpline.com).</sub>
+
+<sub>DO·LOON·AI EXPRESS series · L. BAHAL · LUNARIS · AELIUS IGNIS · O.V. · lunarisbahal</sub>
+
+</div>
