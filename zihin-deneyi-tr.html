@@ -104,8 +104,9 @@
   .jentry p.own{color:var(--ink);font-style:italic;}
   .locked{color:#3a4154 !important;}
   .screen{position:fixed;inset:0;z-index:80;background:var(--bg);display:none;
-    align-items:center;justify-content:center;padding:20px;overflow:auto;}
-  .screen .inner{max-width:660px;text-align:center;}
+    align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+  .screen .inner{max-width:660px;text-align:center;margin:auto;}
+  @media (pointer:coarse){.screen{padding:max(12px,env(safe-area-inset-top)) 14px max(18px,env(safe-area-inset-bottom));}}
   .screen h1{font-size:clamp(20px,4vw,34px);letter-spacing:.35em;color:var(--moon);
     margin-bottom:8px;font-weight:normal;}
   .screen h3{font-size:12px;letter-spacing:.4em;color:var(--accent);margin-bottom:28px;}
@@ -357,6 +358,7 @@
 <button class="mini" onclick="Profile.show()">⚖ ZİHİN PROFİLİ</button>
 <button class="mini" onclick="NEXUS.show()">⟁ NEXUS</button>
 <button class="mini" onclick="if(window.EchoRoom)EchoRoom.show()">◌ YANKI ODASI</button>
+<button class="mini" onclick="if(window.LucidaMirror)LucidaMirror.show()">◑ LUCIDA’NIN AYNASI</button>
 <button class="mini" onclick="Iz.show()">◈ İZ ANITI</button>
 <button class="mini" onclick="Architect.menu()">✶ MİMAR MODU</button>
 <div style="grid-column:1/-1;font-size:8.5px;letter-spacing:.25em;color:var(--violet);opacity:.62;margin:9px 2px 2px;text-transform:uppercase">✦ DÜNYA & BAĞLANTI</div>
@@ -3063,6 +3065,62 @@ const EchoRoom={
     else{UI.toast('◌ '+(tr?'Bu ses başkasının. Yankı daha derinden geliyor — tekrar dinle.':'That voice is another’s. The echo comes from deeper — listen again.'),5200);}}
 };
 if(typeof window!=='undefined')window.EchoRoom=EchoRoom;
+/* ============ LUCIDA'NIN AYNASI — LUCIDA'S MIRROR ============ */
+const DISTORTIONS=[
+  {id:'felaket',name:{tr:'Felaketleştirme',en:'Catastrophizing'},desc:{tr:'En kötü sonu kesinmiş gibi yaşamak.',en:'Living the worst outcome as if certain.'},
+    scene:{tr:'Telefon iki kez çaldı, açılmadı. Zihin çoktan kazayı, hastaneyi, en kötü haberi kurdu. Henüz hiçbir şey olmadı — ama bedenin çoktan oradaydı.',en:'The phone rang twice, unanswered. The mind already built the accident, the hospital, the worst news. Nothing has happened yet — but your body was already there.'},
+    whisper:{tr:'Görüyorum seni, Felaketleştirme. Sen geleceği değil, korkuyu gösteriyorsun.',en:'I see you, Catastrophizing. You show not the future, but the fear.'}},
+  {id:'hephic',name:{tr:'Ya Hep Ya Hiç',en:'All-or-Nothing'},desc:{tr:'Gri tonların olmadığı bir dünya.',en:'A world with no shades of grey.'},
+    scene:{tr:'Bir hata yaptın. Ve o an, tüm gün “mahvolmuş”, tüm çaban “boşa” oldu. Yüzde doksan iyi giden her şey, tek bir lekeyle siliniyor.',en:'You made one mistake. And in that instant the whole day became “ruined,” all your effort “for nothing.” The ninety percent that went well is erased by a single stain.'},
+    whisper:{tr:'Görüyorum seni, Ya Hep Ya Hiç. Sen ya beyaz ya siyah dersin — ama hayat gridir.',en:'I see you, All-or-Nothing. You say either white or black — but life is grey.'}},
+  {id:'zihinoku',name:{tr:'Zihin Okuma',en:'Mind-Reading'},desc:{tr:'Başkalarının seni yargıladığından emin olmak.',en:'Being sure others are judging you.'},
+    scene:{tr:'Selamına kısa karşılık verdi. Zihin hemen okudu: “Bana kızgın, beni sevmiyor, bir şey yaptım.” Oysa belki sadece yorgundu. Sen onun zihnini değil, kendi korkunu okudun.',en:'They answered your greeting briefly. The mind read it at once: “They’re angry, they don’t like me, I did something.” Perhaps they were just tired. You read not their mind, but your own fear.'},
+    whisper:{tr:'Görüyorum seni, Zihin Okuma. Sen onların değil, benim en eski yaramı okuyorsun.',en:'I see you, Mind-Reading. You read not their thoughts, but my oldest wound.'}},
+  {id:'malidir',name:{tr:'-meli / -malı',en:'Should Statements'},desc:{tr:'Kuralların altında ezilmek.',en:'Crushed beneath your own rules.'},
+    scene:{tr:'“Daha güçlü olmalıydım. Bunu hissetmemeliyim. Çoktan halletmeliydim.” Her cümle bir kırbaç. Kendine bir düşmana bile reva görmeyeceğin bir sertlikle davranıyorsun.',en:'“I should be stronger. I shouldn’t feel this. I should have handled it already.” Each sentence a whip. You treat yourself with a harshness you’d spare even an enemy.'},
+    whisper:{tr:'Görüyorum seni, -meli/-malı. Sen şefkat değil, ceza dağıtıyorsun.',en:'I see you, Should. You hand out punishment where compassion belongs.'}},
+  {id:'kisisel',name:{tr:'Kişiselleştirme',en:'Personalization'},desc:{tr:'Her şeyin sorumlusu sen olmak.',en:'Taking the blame for everything.'},
+    scene:{tr:'Toplantı kötü geçti. Aklına ilk gelen: “Benim yüzümden.” Hava, trafik, başkalarının günü — hepsi silindi; geriye yalnızca senin suçun kaldı. Dünyanın ağırlığını tek başına taşıyorsun.',en:'The meeting went badly. Your first thought: “It’s because of me.” The weather, the traffic, everyone else’s day — all erased; only your fault remained. You carry the weight of the world alone.'},
+    whisper:{tr:'Görüyorum seni, Kişiselleştirme. Sen dünyanın tüm yükünü tek bir omuza yığıyorsun.',en:'I see you, Personalization. You pile the whole world’s weight onto one shoulder.'}},
+  {id:'duygusal',name:{tr:'Duygusal Akıl Yürütme',en:'Emotional Reasoning'},desc:{tr:'“Hissediyorsam doğrudur” demek.',en:'“If I feel it, it must be true.”'},
+    scene:{tr:'Kendini değersiz hissediyorsun, ve bu yüzden değersiz olduğuna inanıyorsun. Duygu, kanıt gibi davranıyor. Oysa hissetmek, olmak değildir. Sis, dağın yok olduğu anlamına gelmez.',en:'You feel worthless, and so you believe you are worthless. The feeling poses as evidence. But to feel is not to be. Fog does not mean the mountain is gone.'},
+    whisper:{tr:'Görüyorum seni, Duygusal Akıl Yürütme. Sen sisi dağ sanıyorsun.',en:'I see you, Emotional Reasoning. You mistake the fog for the mountain.'}},
+  {id:'genelleme',name:{tr:'Aşırı Genelleme',en:'Overgeneralization'},desc:{tr:'Tek olaydan “hep/asla” çıkarmak.',en:'From one event to “always / never.”'},
+    scene:{tr:'Bir kez reddedildin. Ve zihin yazdı: “Hep böyle olacak. Kimse beni seçmez. Asla olmayacak.” Tek bir kapı kapandı, sen tüm koridoru duvar sandın.',en:'You were rejected once. And the mind wrote: “It will always be this way. No one chooses me. It will never happen.” One door closed, and you took the whole corridor for a wall.'},
+    whisper:{tr:'Görüyorum seni, Aşırı Genelleme. Sen bir günü ömür sanıyorsun.',en:'I see you, Overgeneralization. You mistake one day for a lifetime.'}},
+  {id:'etiket',name:{tr:'Etiketleme',en:'Labeling'},desc:{tr:'Bir davranışı kimliğe çevirmek.',en:'Turning a behavior into an identity.'},
+    scene:{tr:'Bir şeyi unuttun. “Aptalım” dedin. Bir kez geç kaldın, “güvenilmezim” oldun. Tek bir an, bütün bir kimliğe dönüştü. Yaptığın bir şey, olduğun şeyi yutuyor.',en:'You forgot something. “I’m stupid,” you said. You were late once, and became “unreliable.” A single moment turned into a whole identity. A thing you did swallows the thing you are.'},
+    whisper:{tr:'Görüyorum seni, Etiketleme. Sen bir anı bütün bir insana yapıştırıyorsun.',en:'I see you, Labeling. You glue a single moment onto an entire person.'}}
+];
+const LucidaMirror={
+  load(){try{return JSON.parse(localStorage.getItem('it041_lucmirror'))||{seen:[]}}catch(e){return{seen:[]}}},
+  store(o){try{localStorage.setItem('it041_lucmirror',JSON.stringify(o))}catch(e){}},
+  T(o){return (o&&(o[GAMELANG]||o.en))||'';},
+  _d(id){for(var i=0;i<DISTORTIONS.length;i++)if(DISTORTIONS[i].id===id)return DISTORTIONS[i];return null;},
+  show(){var tr=(GAMELANG==='tr');var st=this.load();
+    var h='<p style="color:var(--dim);font-size:12.5px;line-height:1.65"><b style="color:var(--moon)">Lucida:</b> '+(tr?'“Bu ayna kırık kalıbı tamir etmez. Onu yalnızca ışığa tutar. Zihninin çarpıtmalarından birini seç; onu bir sahne olarak canlandıralım, sonra ona adıyla seslenelim. Değiştirmeyeceğiz — yalnızca tanık olacağız. Görülen bir kalıp, seni yönetmeyi azar azar bırakır.”':'“This mirror does not repair the broken pattern. It only holds it to the light. Choose one of your mind’s distortions; we will stage it as a scene, then call it by its name. We will not change it — only witness it. A pattern that is seen slowly loosens its grip.”')+'</p><div style="margin-top:8px">';
+    DISTORTIONS.forEach(function(d){var seen=st.seen.indexOf(d.id)>=0;h+='<button class="choice" onclick="LucidaMirror.stage(\''+d.id+'\')">'+(seen?'◑ ':'◇ ')+'<b>'+esc(LucidaMirror.T(d.name))+'</b> — <span style="color:var(--dim)">'+esc(LucidaMirror.T(d.desc))+'</span></button>';});
+    h+='</div><p style="color:var(--dim);font-size:11px;margin-top:6px">'+(tr?'Tanık olunan kalıp: ':'Witnessed: ')+st.seen.length+'/'+DISTORTIONS.length+'</p>';
+    UI.doc('◑ '+(tr?'LUCIDA’NIN AYNASI':'LUCIDA’S MIRROR'),h);},
+  stage(id){var tr=(GAMELANG==='tr');var d=this._d(id);if(!d)return;
+    var h='<div style="font-size:10px;letter-spacing:.2em;color:var(--violet)">◑ '+(tr?'SAHNE':'THE SCENE')+' — '+esc(LucidaMirror.T(d.name))+'</div>';
+    h+='<p style="font-style:italic;color:var(--moon);line-height:1.7;font-size:13.5px;margin:8px 0">'+esc(LucidaMirror.T(d.scene))+'</p>';
+    h+='<p style="font-size:12px;color:var(--ink)">'+(tr?'Bu kalıp senin hayatında nerede sahne alıyor? (istersen yaz — cihazından çıkmaz)':'Where does this pattern take the stage in your life? (write if you wish — it never leaves your device)')+'</p>';
+    h+='<textarea id="lmScene" rows="3" maxlength="600" style="width:100%;background:#070910;border:1px solid var(--line);color:var(--ink);padding:8px;font-family:inherit;font-size:12.5px;border-radius:6px"></textarea>';
+    h+='<p style="font-size:12px;color:var(--dim);margin-top:6px"><b>Lucida:</b> '+(tr?'“Şimdi onu değiştirmeye çalışma. Sadece ona adıyla seslen. Adını söylemek, onu sen olmaktan çıkarır.”':'“Now don’t try to change it. Just call it by its name. Naming it makes it no longer you.”')+'</p>';
+    h+='<button class="btn v" onclick="LucidaMirror.witness(\''+id+'\')">◑ '+(tr?'adıyla seslen':'call it by its name')+'</button> <button class="btn ghost" onclick="LucidaMirror.show()">↩ '+(tr?'geri':'back')+'</button>';
+    UI.doc('◑ '+(tr?'LUCIDA’NIN AYNASI':'LUCIDA’S MIRROR'),h);},
+  witness(id){var tr=(GAMELANG==='tr');var d=this._d(id);if(!d)return;
+    var st=this.load();if(st.seen.indexOf(id)<0){st.seen.push(id);this.store(st);}
+    try{S.lucidity=Math.min(100,(S.lucidity||0)+6);if(window.Profile&&Profile.nudge)Profile.nudge(1);if(typeof save==='function')save();if(window.refreshHud)refreshHud();}catch(e){}
+    try{if(window.Mirror&&Mirror.remember)Mirror.remember('lucida','A traveler witnessed and named the pattern: '+LucidaMirror.T(d.name));}catch(e){}
+    var h='<p style="font-style:italic;color:var(--accent);line-height:1.7;font-size:14px">'+esc(LucidaMirror.T(d.whisper))+'</p>';
+    h+='<p style="color:var(--ink);font-size:12.5px;line-height:1.6"><b>Lucida:</b> '+(tr?('“'+esc(LucidaMirror.T(d.name))+' hâlâ burada — ve bu sorun değil. Onu kovmadık, oturmasına izin verdik. Bir kalıp görüldüğünde artık karanlıkta hüküm süremez. Tanık oldun. Bu yeter.”'):('“'+esc(LucidaMirror.T(d.name))+' is still here — and that is alright. We did not banish it; we let it sit. A pattern, once seen, can no longer rule from the dark. You witnessed it. That is enough.”'))+'</p>';
+    h+='<button class="btn ghost" onclick="LucidaMirror.show()">↩ '+(tr?'aynaya dön':'back to the mirror')+'</button>';
+    UI.doc('◑ '+(tr?'TANIK OLUNDU':'WITNESSED'),h);
+    try{UI.toast('◑ '+(tr?'Tanık oldun — kalıbı değiştirmedin, adını verdin. (+berraklık)':'You witnessed it — you didn’t change it, you named it. (+clarity)'),5000);}catch(e){}}
+};
+if(typeof window!=='undefined')window.LucidaMirror=LucidaMirror;
 const SideQuests={
   show(){
     var L=(typeof GAMELANG!=='undefined'?GAMELANG:'en'),tr=(L==='tr');
