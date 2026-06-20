@@ -71,9 +71,10 @@
   #dlgText{font-size:14.5px;line-height:1.55;min-height:44px;white-space:pre-wrap;}
   #dlgNext{font-size:11px;color:var(--dim);text-align:right;margin-top:6px;}
   .modal{position:fixed;inset:0;background:rgba(2,3,7,.9);z-index:90;display:none;
-    align-items:center;justify-content:center;padding:18px;}
+    align-items:flex-start;justify-content:center;padding:18px;overflow-y:auto;-webkit-overflow-scrolling:touch;}
   .panel{background:var(--panel);border:1px solid var(--line);width:min(680px,96vw);
-    max-height:88vh;overflow:auto;padding:26px 28px;border-radius:4px;}
+    max-height:88vh;overflow:auto;padding:26px 28px;border-radius:4px;margin:auto;}
+  @media (pointer:coarse){.modal{padding:max(10px,env(safe-area-inset-top)) 10px max(16px,env(safe-area-inset-bottom));}.panel{max-height:none;margin:0;}}
   .panel h2{font-size:13px;letter-spacing:.3em;color:var(--gold);margin-bottom:14px;text-transform:uppercase;}
   .panel h2.v{color:var(--violet);}
   .panel p{font-size:13.5px;line-height:1.6;margin-bottom:10px;}
@@ -4261,11 +4262,12 @@ if(HAS3D)(function(){
   const scene=new THREE.Scene();
   scene.fog=new THREE.FogExp2(0x070a14,0.0065);
   const camera=new THREE.PerspectiveCamera(58,innerWidth/innerHeight,.1,900);
-  const renderer=new THREE.WebGLRenderer({antialias:true});
-  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  const _coarse=(typeof matchMedia!=='undefined'&&matchMedia('(pointer:coarse)').matches);
+  const renderer=new THREE.WebGLRenderer({antialias:!_coarse,powerPreference:'high-performance'});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,_coarse?1.5:2));
   renderer.setSize(innerWidth,innerHeight);
   renderer.shadowMap.enabled=true;
-  renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  renderer.shadowMap.type=_coarse?THREE.PCFShadowMap:THREE.PCFSoftShadowMap;
   renderer.toneMapping=THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure=1.15;
   renderer.outputEncoding=THREE.sRGBEncoding;
@@ -5880,36 +5882,45 @@ function drawMini(){
 }
 function drawBigMap(){
   const c=document.getElementById('bigmap');
-  c.width=Math.min(innerWidth*.9,900);c.height=c.width*WZ/WX;
+  const tr=(GAMELANG==='tr');
+  c.width=Math.min(innerWidth*.92,980);c.height=c.width*WZ/WX;
   const ctx=c.getContext('2d'),sx=c.width/WX,sz=c.height/WZ;
   drawMiniBase(ctx,c.width,c.height);
-  ctx.font='11px monospace';ctx.textAlign='center';ctx.fillStyle='#9aa7c4';
-  ZONES.forEach(z=>ctx.fillText(z.name,z.x*sx,z.z*sz-z.r*sx-4));
-  ctx.fillText('AYNALAR KAPISI',L.gate.x*sx,L.gate.z*sz-12);
-  /* v8.6: karakterler (yeşilimsi), ajanlar (camgöbeği), yolcular (altın) — adlarıyla */
-  ctx.font='10px monospace';
-  ctx.fillStyle='rgba(127,212,193,.9)';
-  ctx.fillText('SILVANUS',L.caravan.x*sx,L.caravan.z*sz-8);
-  ctx.fillText('LUCIUS',L.lucius.x*sx,L.lucius.z*sz-8);
-  ctx.fillText('LUCIDA ☎',L.payphone.x*sx,L.payphone.z*sz-8);
-  if(!S.flags.integrated)ctx.fillText('BAHAL ⟁',L.shadowSpot.x*sx,L.shadowSpot.z*sz+16);
-  if(W3.noctPos)ctx.fillText('MC NOCTORNUS',W3.noctPos.x*sx,W3.noctPos.z*sz-8);
-  if(lunarisMoon()&&!S.solved.s2)ctx.fillText('LUNARIS ☽',L.lunaris.x*sx,L.lunaris.z*sz-8);
-  ctx.fillStyle='rgba(110,210,220,.9)';ctx.font='9px monospace';
-  (window.__mmA||[]).forEach(a=>{if(a.nm)ctx.fillText(a.nm,a.x*sx,a.z*sz-6);});
-  ctx.fillStyle='rgba(230,195,110,.95)';ctx.font='10px monospace';
-  (window.__mmP||[]).forEach(p=>{ctx.strokeStyle='rgba(230,195,110,.7)';ctx.lineWidth=2;ctx.beginPath();ctx.arc(p.x*sx,p.z*sz,6,0,7);ctx.stroke();if(p.n)ctx.fillText(p.n,p.x*sx,p.z*sz-9);});{const _c=(window.__mmP||[]).length;ctx.fillStyle=_c?'rgba(230,195,110,.95)':'#6b7689';ctx.font='12px monospace';ctx.textAlign='center';ctx.fillText(_c?('● şu an '+_c+' başka yolcu burada'):'● şu an tek yolcu sensin',c.width/2,18);}
-  ctx.fillStyle='#9d8cc9';
-  ctx.font='10px monospace';ctx.fillStyle='#9d8cc9';ctx.fillText('◈ mor = ritüellerin',c.width/2-150,c.height-30);ctx.fillStyle='rgba(230,195,110,.95)';ctx.fillText('● altın = yolcular',c.width/2,c.height-30);ctx.fillStyle='rgba(110,210,220,.9)';ctx.fillText('● cyan = ayna-ajanları',c.width/2+150,c.height-30);
-  ctx.font='11px monospace';
-  (window.W3&&W3.PORTALS||[]).forEach(function(p){if(!p.house)return;var X=p.x*sx,Z=p.z*sz;var integ=S.flags&&S.flags[p.k+'Integrated'];ctx.strokeStyle=integ?'rgba(127,212,193,.95)':'rgba(205,184,120,.95)';ctx.fillStyle=ctx.strokeStyle;ctx.lineWidth=2;ctx.beginPath();ctx.arc(X,Z,8,0,7);ctx.stroke();ctx.beginPath();ctx.moveTo(X,Z-4);ctx.lineTo(X+3.5,Z+3);ctx.lineTo(X-3.5,Z+3);ctx.closePath();ctx.fill();ctx.fillText((integ?'✓ ':'☽ ')+(function(){var R=(window.REALMS||[]).find(function(x){return x.k===p.k;});return R&&window.Realms?Realms.T(R.n):((window.House&&House.NAMES[p.k])||p.k);})(),X,Z-11);});
+  function lbl(txt,x,y,color,size){size=size||10;ctx.font=size+'px monospace';ctx.textAlign='center';var w=ctx.measureText(txt).width;ctx.fillStyle='rgba(4,6,12,.66)';ctx.fillRect(x-w/2-3,y-size,w+6,size+4);ctx.fillStyle=color;ctx.fillText(txt,x,y-2);}
+  ZONES.forEach(z=>lbl(z.name,z.x*sx,z.z*sz-z.r*sx-2,'#aeb8d4',11));
+  lbl(tr?'AYNALAR KAPISI':'GATE OF MIRRORS',L.gate.x*sx,L.gate.z*sz-10,'#c9b6e6',10);
+  lbl('SILVANUS',L.caravan.x*sx,L.caravan.z*sz-7,'#7fd4c1');
+  lbl('LUCIUS',L.lucius.x*sx,L.lucius.z*sz-7,'#7fd4c1');
+  lbl('LUCIDA ☎',L.payphone.x*sx,L.payphone.z*sz-7,'#7fd4c1');
+  if(!S.flags.integrated)lbl('BAHAL ⟁',L.shadowSpot.x*sx,L.shadowSpot.z*sz+14,'#cdb878');
+  if(W3.noctPos)lbl('NOCTORNUS',W3.noctPos.x*sx,W3.noctPos.z*sz-7,'#7fd4c1');
+  if(lunarisMoon()&&!S.solved.s2)lbl('LUNARIS ☽',L.lunaris.x*sx,L.lunaris.z*sz-7,'#7fd4c1');
+  (window.W3&&W3.PORTALS||[]).forEach(function(p){if(!p.house)return;var X=p.x*sx,Z=p.z*sz;var integ=S.flags&&S.flags[p.k+'Integrated'];var col=integ?'#7fd4c1':'#cdb878';ctx.strokeStyle=col;ctx.fillStyle=col;ctx.lineWidth=2;ctx.beginPath();ctx.arc(X,Z,7,0,7);ctx.stroke();ctx.beginPath();ctx.moveTo(X,Z-4);ctx.lineTo(X+3.5,Z+3);ctx.lineTo(X-3.5,Z+3);ctx.closePath();ctx.fill();var nm=(function(){var R=(window.REALMS||[]).find(function(x){return x.k===p.k;});return R&&window.Realms?Realms.T(R.n):((window.House&&House.NAMES[p.k])||p.k);})();lbl((integ?'✓ ':'☽ ')+nm,X,Z-10,col,9);});
+  ctx.fillStyle='rgba(157,140,201,.95)';RITE_SITES.forEach((k,i)=>{if(S.rites['r'+(i+1)]===undefined){const X=L[k].x*sx,Z=L[k].z*sz;ctx.beginPath();ctx.moveTo(X,Z-6);ctx.lineTo(X+6,Z);ctx.lineTo(X,Z+6);ctx.lineTo(X-6,Z);ctx.closePath();ctx.fill();}});
+  ctx.fillStyle='rgba(110,210,220,.95)';(window.__mmA||[]).forEach(a=>{ctx.beginPath();ctx.arc(a.x*sx,a.z*sz,4.5,0,7);ctx.fill();});
+  (window.__mmA||[]).forEach(a=>{if(a.nm)lbl(a.nm,a.x*sx,a.z*sz-6,'rgba(150,225,235,.95)',9);});
+  var _trc=(window.__traces||[]).filter(t=>t.x!==undefined).slice(-40);
+  ctx.fillStyle='rgba(157,140,201,.5)';_trc.forEach(t=>{const X=t.x*sx,Z=t.z*sz;ctx.beginPath();ctx.moveTo(X,Z-3);ctx.lineTo(X+3,Z);ctx.lineTo(X,Z+3);ctx.lineTo(X-3,Z);ctx.closePath();ctx.fill();});
+  (window.__mmP||[]).forEach(p=>{ctx.strokeStyle='rgba(230,195,110,.8)';ctx.lineWidth=2;ctx.beginPath();ctx.arc(p.x*sx,p.z*sz,6,0,7);ctx.stroke();if(p.n)lbl(p.n,p.x*sx,p.z*sz-9,'rgba(235,200,120,.95)',9);});
   const wp=waypoint();
-  if(wp){ctx.fillStyle='#cdb878';ctx.beginPath();ctx.arc(wp.x*sx,wp.z*sz,5,0,7);ctx.fill();
-    ctx.fillText('◆ HEDEF',wp.x*sx,wp.z*sz+18);}
-  ctx.fillStyle='rgba(157,140,201,.95)';RITE_SITES.forEach((k,i)=>{if(S.rites['r'+(i+1)]===undefined){const X=L[k].x*sx,Z=L[k].z*sz;ctx.beginPath();ctx.moveTo(X,Z-6);ctx.lineTo(X+6,Z);ctx.lineTo(X,Z+6);ctx.lineTo(X-6,Z);ctx.closePath();ctx.fill();}});ctx.fillStyle='rgba(110,210,220,.95)';(window.__mmA||[]).forEach(a=>{ctx.beginPath();ctx.arc(a.x*sx,a.z*sz,4.5,0,7);ctx.fill();});ctx.fillStyle='rgba(157,140,201,.92)';(window.__traces||[]).forEach(t=>{if(t.x===undefined)return;const X=t.x*sx,Z=t.z*sz;ctx.beginPath();ctx.moveTo(X,Z-4);ctx.lineTo(X+4,Z);ctx.lineTo(X,Z+4);ctx.lineTo(X-4,Z);ctx.closePath();ctx.fill();});
-  ctx.fillStyle='#e8e4d4';ctx.beginPath();ctx.arc(S.px*sx,S.pz*sz,5,0,7);ctx.fill();
-  ctx.fillStyle='#7fd4c1';ctx.fillText('SEN',S.px*sx,S.pz*sz-10);
-  ctx.fillText('— KAPATMAK İÇİN [M] —',c.width/2,c.height-14);
+  if(wp){ctx.fillStyle='#cdb878';ctx.beginPath();ctx.arc(wp.x*sx,wp.z*sz,5,0,7);ctx.fill();lbl(tr?'◆ HEDEF':'◆ OBJECTIVE',wp.x*sx,wp.z*sz+16,'#e3c878',9);}
+  ctx.fillStyle='#e8e4d4';ctx.beginPath();ctx.arc(S.px*sx,S.pz*sz,5,0,7);ctx.fill();lbl(tr?'SEN':'YOU',S.px*sx,S.pz*sz-10,'#7fd4c1',10);
+  drawMapLegend(ctx,tr);
+  ctx.textAlign='center';
+  var _c=(window.__mmP||[]).length;
+  ctx.font='12px monospace';ctx.fillStyle=_c?'rgba(230,195,110,.95)':'#6b7689';
+  var ctxt=_c?(tr?('● şu an '+_c+' yolcu daha burada'):('● '+_c+' other traveler'+(_c>1?'s':'')+' here now')):(tr?'● şu an buradaki tek yolcu sensin':'● you are the only traveler here right now');
+  ctx.fillText(ctxt,c.width/2,c.height-30);
+  ctx.fillStyle='#6b7689';ctx.font='10px monospace';ctx.fillText(tr?'— KAPATMAK İÇİN [M] —':'— PRESS [M] TO CLOSE —',c.width/2,c.height-12);
+}
+function drawMapLegend(ctx,tr){
+  const items=[['#7fd4c1',tr?'karakterler':'characters'],['rgba(110,210,220,.95)',tr?'ayna-ajanları':'mirror-agents'],['rgba(230,195,110,.95)',tr?'şu anki yolcular':'travelers now'],['#cdb878',tr?'evler / hedef':'houses / objective'],['rgba(157,140,201,.7)',tr?'ritüeller & izler':'rites & traces']];
+  const pad=10,lh=15,bw=176,bh=pad*2+lh*items.length+16;
+  ctx.fillStyle='rgba(4,6,12,.74)';ctx.strokeStyle='rgba(127,212,193,.35)';ctx.lineWidth=1;
+  ctx.fillRect(10,10,bw,bh);ctx.strokeRect(10,10,bw,bh);
+  ctx.textAlign='left';ctx.font='10px monospace';ctx.fillStyle='#aeb8d4';
+  ctx.fillText(tr?'EVREN HARİTASI':'UNIVERSE MAP',10+pad,10+pad+8);
+  items.forEach((it,i)=>{const y=10+pad+24+i*lh;ctx.fillStyle=it[0];ctx.beginPath();ctx.arc(10+pad+5,y-3,4,0,7);ctx.fill();ctx.fillStyle='#c2cadf';ctx.fillText(it[1],10+pad+16,y);});
 }
 document.getElementById('bigmapWrap').addEventListener('click',()=>Game.toggleMap());
 document.getElementById('bigmap').addEventListener('click',function(ev){const c=this,rect=c.getBoundingClientRect();const wx=(ev.clientX-rect.left)/rect.width*WX,wz=(ev.clientY-rect.top)/rect.height*WZ;let hit=null,best=1e9;(window.__traces||[]).forEach(t=>{if(t.x===undefined)return;const d=Math.hypot(wx-t.x,wz-t.z);if(d<best){best=d;hit=t;}});if(hit&&best<WX*0.05){ev.stopPropagation();UI.toast('◈ '+hit.mask+': "'+hit.text+'"'+(hit.ack>0?'  ◇'+hit.ack:''),6000);}});
