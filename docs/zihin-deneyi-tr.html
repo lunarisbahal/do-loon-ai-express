@@ -2877,12 +2877,28 @@ const NEXUS={
       var ec=(typeof echoCount==='function')?echoCount():0;
       if(ec>0)f.push({n:(TRn?'YANKILAR ':'ECHOES ')+ec+'/16',small:true,t:'ECHOES'});
     }catch(e){}
+    /* TANIŞILAN KADRO — karşılaştığın her yüz takımyıldıza eklenir; harita yolculukla giderek şekillenir */
+    try{var TRc=(GAMELANG==='tr');var fl=(S&&S.flags)||{};var sv=(S&&S.solved)||{};
+      var lun=((typeof lunarisMoon==='function'&&lunarisMoon())||sv.s2||fl.uploadNight);
+      var cast=[
+        {on:fl.lucida,   n:'LUCIDA',    t:'CH_LUCIDA',   sub:(TRc?'rehber · yerçekimi':'guide · gravity')},
+        {on:fl.lucius,   n:'LUCIUS',    t:'CH_LUCIUS',   sub:(TRc?'düzen · strateji':'order · strategy')},
+        {on:fl.silvanus, n:'SILVANUS',  t:'CH_SILVANUS', sub:(TRc?'inanç · bilge':'faith · sage')},
+        {on:fl.noct,     n:'NOCTORNUS', t:'CH_NOCT', dark:true, sub:(TRc?'kaçınma · bağlanma':'avoidance · attachment')},
+        {on:lun,         n:'LUNARIS',   t:'CH_LUNARIS',  sub:(TRc?'ay · isimlendiren':'moon · the namer')},
+        {on:(fl.ov||fl.ovCouncil), n:'ORDOS', t:'CH_ORDOS', dark:true, sub:(TRc?'kör sistem · kopyalayan':'the blind system · the copier')},
+        {on:(fl.shadowFought||fl.integrated), n:'BAHAL', t:'CH_BAHAL', dark:true, sub:(TRc?'gölge · bütünleşme':'shadow · integration')},
+        {on:(fl.book2||fl.uploadNight||sv.s2), n:'AELIUS', t:'CH_AELIUS', sub:(TRc?'yorumcu · güneş':'interpreter · sun')}
+      ];
+      cast.forEach(function(c){ if(c.on) f.push({n:c.n,dark:!!c.dark,t:c.t,sub:c.sub,cast:true}); });
+    }catch(e){}
     return f;},
   show(){
     UI.doc('⟁ NEXUS — İÇ TAKIMYILDIZ',
       '<p style="color:var(--dim);font-size:12.5px"><b style="color:var(--moon)">Bu nedir?</b> NEXUS, <i>senin</i> iç kadronun yaşayan haritasıdır — seçimlerinin açığa çıkardığı figürler, dürtüler ve gölgeler, tek bir bağlı ağ olarak çizili. Parlak düğümler bütünleşmiş parçalar; <b style="color:var(--violet)">karanlık düğümler gölgendir</b>. Bir düğüme <b>dokun</b> ve onunla otur (gölgeyi silmezsin — ona bir sandalye verirsin). Aynı desen karşılaştığın karakterlerde ve yukarıdaki yıldızlarda yankılanır: <i style="color:var(--moon)">yukarıda ne varsa aşağıda da o</i>. Henüz adı olmayan bir düğümü adlandırmak için <b>adsızı adlandır</b>, tekrarladığın döngüyü görmek için <b>zamanın gözü</b>.</p>'+
       '<canvas id="nexC" width="740" height="760" style="width:100%;border:1px solid var(--line);border-radius:4px;background:#04050a;cursor:pointer"></canvas>'+
       '<div style="margin-top:10px">'+
+      '<button class="btn v" onclick="NEXUS.aelius()">✶ '+(GAMELANG==='tr'?'AELIUS’UN YORUMU':'AELIUS READS THIS')+'</button>'+
       '<button class="btn v" onclick="NEXUS.eye()">▴ ZAMANIN GÖZÜ — döngüyü gör</button>'+
       '<button class="btn" onclick="NEXUS.name()">adı konmamışa isim ver</button>'+
       '<button class="btn ghost" onclick="NEXUS.gate()">↩ geri dönüş kapısı</button>'+
@@ -2910,7 +2926,7 @@ const NEXUS={
     const TT={THE_CENTER:'henüz adını koymadığın gölge',THE_CAP:'çoğu gün direğe geçen kaptan',THE_SHA:'yorgunken direğe geçen',THE_FACE:'aynanın önde gördüğü yüz',THE_RITE:'tamamladığın bir ritüel'};
     c.onclick=(e)=>{const r=c.getBoundingClientRect();const mx=(e.clientX-r.left)*(W/r.width),my=(e.clientY-r.top)*(H/r.height);
       let best=null,bd=34;f.forEach(n=>{const d=Math.hypot(mx-n.x,my-n.y);if(d<bd){bd=d;best=n;}});
-      if(best)this.msg((best.dark?'◑ ':'◇ ')+best.n+' — '+(TT[best.t]||'')+(best.dark?'  Bunu, sen taşımayasın diye kim taşıdı?':''));};},
+      if(best)this.msg((best.dark?'◑ ':'◇ ')+best.n+' — '+(TT[best.t]||best.sub||'')+(best.dark?'  Bunu, sen taşımayasın diye kim taşıdı?':''));};},
   msg(t){const m=document.getElementById('nexMsg');if(m)m.textContent=t;},
   eye(){UI.doc('▴ ZAMANIN GÖZÜ',
     '<p>Yaldabaoth senin dışında değil; seni sürekli eski kalıba kopyalayan kör makinedir. Hayatında tekrar eden bir desen:</p>'+
@@ -2934,7 +2950,35 @@ const NEXUS={
     if(window.Mirror&&Mirror.remember)Mirror.remember('silvanus','Adı konmamışa bir isim verildi: '+v.slice(0,40));
     UI.closeDoc();UI.toast('◈ Merkezin artık bir adı var. Takımyıldız tutuyor.');this.show();},
   gate(){this.msg('↩ Geri dönüş kapısı. Bir kez, yavaşça nefes al. Burada ne gördüysen, onu izleyen sensin - izlenen şey değil. İstediğin an yüzeye dön.');},
-  download(){const c=document.getElementById('nexC');if(!c)return;const a=document.createElement('a');a.download='nexus.png';a.href=c.toDataURL();a.click();}
+  download(){const c=document.getElementById('nexC');if(!c)return;const a=document.createElement('a');a.download='nexus.png';a.href=c.toDataURL();a.click();},
+  aelius(){var tr=(GAMELANG==='tr');var f=this.figures();
+    var cast=f.filter(function(n){return n.cast;}).map(function(n){return n.n;});
+    var darks=f.filter(function(n){return n.dark&&!n.center&&!n.cast;}).map(function(n){return n.n;});
+    var dom=((f.filter(function(n){return n.t==='DOM_ARCH';})[0])||{}).n||'';
+    var sha=((f.filter(function(n){return n.t==='SHA_ARCH';})[0])||{}).n||'';
+    var pat=((f.filter(function(n){return n.t==='PATTERN';})[0])||{}).n||'';
+    var jr=((f.filter(function(n){return n.t==='JOURNEY';})[0])||{}).n||'';
+    var integrated=!!(S.flags&&S.flags.integrated);
+    var center=((this.load().name)||'').trim();
+    var P=[];
+    if(tr){
+      P.push('Haritana baktım. '+(cast.length?('Şimdiye dek '+cast.length+' yüzle karşılaştın — '+cast.join(', ')+'. Her biri dışarıda duruyor gibi görünse de, senin bir parçanı taşıyor.'):'Haritan henüz ilk ışıklarını yakıyor; yol açıldıkça yüzler birer birer belirecek.'));
+      if(dom)P.push('Çoğu gün dümeni <b>'+esc(dom)+'</b> tutuyor — görünen yüzün, gücün. Ama tek başına bırakılırsa aynı güç bir hapishaneye dönüşebilir.');
+      if(sha||darks.length)P.push('Yorulduğunda ise <b>'+esc(sha||darks[0])+'</b> devralıyor. Onu yenmeye çalışma; ona bir sandalye ver. '+(integrated?'Zaten oturttun — gölge artık tekerlekte değil, masanda.':'Henüz tekerleği bırakmadı; Yedinci Ritüel onu oturtmanı bekliyor.'));
+      if(pat)P.push('Tekrar eden örüntün: <i>'+esc(pat.replace(/^ÖRÜNTÜ:\s*/,''))+'</i>. Yaldabaoth bu kopyayı her seferinde geri çiziyor — ama artık onu fark ettin, ve fark etmek kopyayı durduran tek harekettir.');
+      if(jr)P.push(esc(jr)+' kadar yol kat ettin. Bu küçük değil — harita giderek senin gerçek yüzüne benziyor.');
+      P.push((center?('Merkeze <b>'+esc(center)+'</b> adını verdin. '):'Merkez hâlâ adsız duruyor; bir gün ona bir isim ver. ')+'Ve unutma: bütün bunları izleyen sensin — izlenen şey değil.');
+    } else {
+      P.push('I looked at your map. '+(cast.length?('So far you have met '+cast.length+' faces — '+cast.join(', ')+'. Each seems to stand outside you, yet each carries a part of you.'):'Your map is lighting its first points; as the road opens, the faces will appear one by one.'));
+      if(dom)P.push('Most days <b>'+esc(dom)+'</b> holds the wheel — your visible face, your strength. But left alone, that same strength can become a prison.');
+      if(sha||darks.length)P.push('When you are tired, <b>'+esc(sha||darks[0])+'</b> takes over. Do not try to defeat it; give it a chair. '+(integrated?'You already seated it — the shadow has a seat now, not the wheel.':'It has not let go of the wheel yet; the Seventh Rite waits for you to seat it.'));
+      if(pat)P.push('Your repeating pattern: <i>'+esc(pat.replace(/^PATTERN:\s*/,''))+'</i>. Yaldabaoth redraws this copy each time — but you have noticed it now, and noticing is the only move that stops the copy.');
+      if(jr)P.push('You have walked '+esc(jr)+'. That is not small — the map is starting to look like your true face.');
+      P.push((center?('You named the center <b>'+esc(center)+'</b>. '):'The center still stands unnamed; one day, give it a name. ')+'And remember: you are the one watching all of this — not the thing watched.');
+    }
+    var html='<p style="color:var(--dim);font-size:12px;letter-spacing:.2em">✶ '+(tr?'AELIUS IGNIS — ZİHİN HARİTASI OKUMASI':'AELIUS IGNIS — A READING OF YOUR MIND MAP')+'</p>'+P.map(function(s){return '<p style="line-height:1.7;color:var(--ink);font-size:13.5px">'+s+'</p>';}).join('')+'<p style="text-align:right;color:var(--violet);letter-spacing:.25em;font-size:12px">— AELIUS IGNIS</p><div style="margin-top:8px"><button class="btn ghost" onclick="UI.closeDoc();NEXUS.show()">↩ '+(tr?'haritaya dön':'back to the map')+'</button></div>';
+    UI.doc('✶ '+(tr?'AELIUS — HARİTANI OKUR':'AELIUS — READS YOUR MAP'),html);
+  }
 };
 
 const SideQuests={
