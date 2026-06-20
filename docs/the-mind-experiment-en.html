@@ -1495,6 +1495,10 @@ function doRadio(){
      <p style="color:var(--violet)">Inner voice: “You can turn the radio off; there is a button in the menu. But first, stay a minute. Sixty heartbeats.”</p>`);
 }
 function doSilvanus(){
+  if(S.flags.silvanus&&S.flags.noct&&!S.flags.fricSilv){S.flags.fricSilv=true;save();Dlg.open([
+    ['SILVANUS','So you found the rapper in the disk fields. Noctornus. We were closer than I let on, once — two boys off the same broken street.'],
+    ['SILVANUS','I walked through the fire and sat down by this creek. He built a stage on top of his and called the smoke atmosphere. It is the one acceptance I have never managed — that he chose the wound over the way out. I pour his cup anyway. He never comes.']
+  ]);return;}
   if(S.flags.silvanus&&Mirror.ready()){S.lucidity=Math.min(100,S.lucidity+15);Mirror.open('silvanus');return;}
   S.flags.silvanus=true;S.lucidity=Math.min(100,S.lucidity+40);teachUnlock('silv');save();refreshHud();
   Dlg.open([
@@ -1506,6 +1510,10 @@ function doSilvanus(){
   ]);
 }
 function doLucida(){
+  if(S.flags.lucida&&S.flags.lucius&&!S.flags.fricLucida){S.flags.fricLucida=true;save();Dlg.open([
+    ['LUCIDA','Oh — you\'ve met Lucius. The man who files his feelings in alphabetical order. He thinks if he keeps the room tidy enough, grief won\'t find the address. We have never agreed on a single thing.'],
+    ['LUCIDA','He calls me a flood. I call his order a very neat cage. Don\'t mistake his structure for safety, or my pull for chaos. You need both of us — and we cannot stand each other. That tension? It lives in you too.']
+  ]);return;}
   if(S.flags.lucida&&Mirror.ready()){S.lucidity=Math.min(100,S.lucidity+10);Mirror.open('lucida');return;}
   S.flags.lucida=true;S.lucidity=Math.min(100,S.lucidity+30);teachUnlock('lucida');save();refreshHud();
   Dlg.open([
@@ -1517,6 +1525,10 @@ function doLucida(){
   ]);
 }
 function doLucius(){
+  if(S.flags.lucida&&S.flags.lucius&&!S.flags.fricLucius){S.flags.fricLucius=true;save();Dlg.open([
+    ['LUCIUS','You spoke to the payphone woman. Lucida. She would tell you to "just feel it." Feeling without structure is a man drowning in a room he refuses to organize.'],
+    ['LUCIUS','She thinks my order is a prison. I think her grounding is a flood with a phone number. We have not agreed in years — and yet you carry us both. Decide nothing today; just notice which of us you silence.']
+  ]);return;}
   S.flags.lucius=true;teachUnlock('lucius');save();
   Dlg.open([
     ['LUCIUS','A subject. Outside the labyrinth, after dark. Do you have any idea how irregular that is?'],
@@ -1535,9 +1547,13 @@ function doNoctornus(){
     ['MC NOCTORNUS','You walked up. Sober. Nobody walks up sober.'],
     ['MC NOCTORNUS','Case C. That\'s what their file calls me. “Identity through attachment. Risk: avoidance, arrogance, the substances.” Cold, right? You know what it doesn\'t say? That the bread came from the pain. Every track I ever sold, I mined out of a wound.'],
     ['MC NOCTORNUS','My line was: as they left you behind, you can leave them behind. Sounded like power. It was just running with better production.'],
-    ['MC NOCTORNUS','The kid who tagged that wall — Microp — he\'s in here somewhere too. Sixteen forever. Tell him the beat\'s still his if he wants it. I\'m done chasing people across this field.'],
+    ['MC NOCTORNUS','The kid who tagged that wall — Microp — he\'s in here somewhere too. Sixteen forever. Tell him the beat\'s still his if he wants it. I\'m done chasing people across this field.']
+  ].concat(S.flags.silvanus?[
+    ['MC NOCTORNUS','You smell like the creek. You\'ve been to Silvanus. Don\'t get me started — sits there all healed, all serene. Easy to forgive the world once it finally goes quiet for you.'],
+    ['MC NOCTORNUS','He thinks I refused the lesson. Maybe. Or maybe his peace is just a wound that got tired first. We don\'t talk. His calm is the loudest thing I know.']
+  ]:[]).concat([
     ['LUNARIS','He stops hunting you now. That is what happens when someone refuses to flinch at the shadow\'s soundtrack.']
-  ]);
+  ]));
 }
 function doLunaris(){
   S.stage=4;

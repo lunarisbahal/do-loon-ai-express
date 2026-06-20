@@ -1456,6 +1456,10 @@ function pickReading(r){
   aeliusCard(M[r]+' — İmza, kimlik verir. Hakikat, kimliksizdir. Deney bitmedi; artık senin deneyin.',()=>Game.finale());
 }
 function doSilvanus(){
+  if(S.flags.silvanus&&S.flags.noct&&!S.flags.fricSilv){S.flags.fricSilv=true;save();Dlg.open([
+    ['SILVANUS','Demek disk tarlalarındaki rapçiyi buldun. Noctornus. Bir zamanlar göründüğümden daha yakındık — aynı kırık sokağın iki çocuğu.'],
+    ['SILVANUS','Ben ateşin içinden yürüyüp bu derenin başına oturdum. O kendi ateşinin üstüne bir sahne kurdu ve dumana "atmosfer" dedi. Hiçbir zaman başaramadığım tek kabul bu — yarayı, çıkış yoluna tercih etmesi. Yine de fincanını dolduruyorum. Hiç gelmiyor.']
+  ]);return;}
   if(S.flags.silvanus&&Mirror.ready()){S.lucidity=Math.min(100,S.lucidity+15);Mirror.open('silvanus');return;}
   S.flags.silvanus=true;S.lucidity=Math.min(100,S.lucidity+40);teachUnlock('silv');save();refreshHud();
   Dlg.open([
@@ -1487,6 +1491,10 @@ function doRadio(){
      <p style="color:var(--violet)">İç ses: “Radyoyu kapatabilirsin; menüde düğmesi var. Ama önce bir dakika dur. Altmış kalp atışı.”</p>`);
 }
 function doLucida(){
+  if(S.flags.lucida&&S.flags.lucius&&!S.flags.fricLucida){S.flags.fricLucida=true;save();Dlg.open([
+    ['LUCIDA','Demek Lucius\'la tanıştın. Duygularını alfabetik sıraya dizen adam. Odayı yeterince düzenli tutarsa kederin adresi bulamayacağını sanıyor. Hiçbir konuda anlaşamadık.'],
+    ['LUCIDA','O bana sel diyor. Ben onun düzenine çok temiz bir kafes diyorum. Onun yapısını güvenlikle, benim çekimimi kaosla karıştırma. İkimize de ihtiyacın var — ve biz birbirimize tahammül edemiyoruz. O gerilim sende de yaşıyor.']
+  ]);return;}
   if(S.flags.lucida&&Mirror.ready()){S.lucidity=Math.min(100,S.lucidity+10);Mirror.open('lucida');return;}
   S.flags.lucida=true;S.lucidity=Math.min(100,S.lucidity+30);teachUnlock('lucida');save();refreshHud();
   Dlg.open([
@@ -1498,6 +1506,10 @@ function doLucida(){
   ]);
 }
 function doLucius(){
+  if(S.flags.lucida&&S.flags.lucius&&!S.flags.fricLucius){S.flags.fricLucius=true;save();Dlg.open([
+    ['LUCIUS','Telefon kulübesindeki kadınla konuşmuşsun. Lucida. Sana "sadece hisset" der. Yapı olmadan hissetmek, düzenlemeyi reddettiği bir odada boğulan bir adamdır.'],
+    ['LUCIUS','O benim düzenimi hapishane sanıyor. Ben onun topraklamasını telefon numarası olan bir sel sanıyorum. Yıllardır anlaşamadık — yine de ikimizi de taşıyorsun. Bugün bir şeye karar verme; sadece hangimizi susturduğunu fark et.']
+  ]);return;}
   S.flags.lucius=true;teachUnlock('lucius');save();
   Dlg.open([
     ['LUCIUS','Bir denek. Karanlık çöktükten sonra labirentin dışında. Bunun ne kadar usulsüz olduğunun farkında mısın?'],
@@ -1516,9 +1528,13 @@ function doNoctornus(){
     ['MC NOCTORNUS','Yürüyüp geldin. Ayık. Kimse ayık gelmez.'],
     ['MC NOCTORNUS','Vaka C. Dosyaları bana öyle diyor. “İlişkiler üzerinden kimlik. Risk: kaçınma, kibir, maddeler.” Soğuk, değil mi? Ne yazmıyor biliyor musun? Ekmeğin acıdan geldiğini. Sattığım her parçayı bir yaradan kazıp çıkardım.'],
     ['MC NOCTORNUS','Benim repliğim şuydu: onların seni bıraktığı gibi sen de onları arkanda bırakabilirsin. Güç gibi ses veriyordu. Daha iyi prodüksiyonla kaçmaktı sadece.'],
-    ['MC NOCTORNUS','Şu duvarı işaretleyen çocuk — Microp — o da burada bir yerlerde. Sonsuza dek on altı. Söyle ona, isterse ritim hâlâ onun. Ben bu tarlada insan kovalamayı bıraktım.'],
+    ['MC NOCTORNUS','Şu duvarı işaretleyen çocuk — Microp — o da burada bir yerlerde. Sonsuza dek on altı. Söyle ona, isterse ritim hâlâ onun. Ben bu tarlada insan kovalamayı bıraktım.']
+  ].concat(S.flags.silvanus?[
+    ['MC NOCTORNUS','Dere gibi kokuyorsun. Silvanus\'a gitmişsin. Hiç başlatma — orada öyle oturuyor, iyileşmiş, dingin. Dünya senin için nihayet sustuğunda affetmek kolay.'],
+    ['MC NOCTORNUS','Dersi reddettiğimi sanıyor. Belki. Ya da belki onun huzuru sadece önce yorulan bir yaradır. Konuşmuyoruz. Onun sükuneti duyduğum en gürültülü şey.']
+  ]:[]).concat([
     ['LUNARIS','Artık seni avlamayacak. Gölgenin fon müziğine irkilmeyi reddeden birine olan budur.']
-  ]);
+  ]));
 }
 function doLunaris(){
   S.stage=4;
