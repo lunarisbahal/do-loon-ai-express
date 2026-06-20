@@ -363,6 +363,7 @@
 <button class="mini" onclick="MindMap.show()">🜨 MIND MAP</button>
 <button class="mini" onclick="Profile.show()">⚖ MIND PROFILE</button>
 <button class="mini" onclick="NEXUS.show()">⟁ NEXUS</button>
+<button class="mini" onclick="if(window.EchoRoom)EchoRoom.show()">◌ ECHO CHAMBER</button>
 <button class="mini" onclick="Iz.show()">◈ TRACE MONUMENT</button>
 <button class="mini" onclick="Architect.menu()">✶ ARCHITECT MODE</button>
 <div style="grid-column:1/-1;font-size:8.5px;letter-spacing:.25em;color:var(--violet);opacity:.62;margin:9px 2px 2px;text-transform:uppercase">✦ WORLD & CONNECT</div>
@@ -3003,6 +3004,89 @@ const NEXUS={
   }
 };
 
+/* ============ YANKI ODASI — ECHO CHAMBER ============
+   Bir karakterin yarım bıraktığı bir cümle, haftalar sonra başka birinin ağzından — kayarak — geri döner.
+   İki ses arasındaki boşluk gölge çalışmasının arenası. Oyuncu yankının izini ilk kaynağına sürer. */
+const ECHO_SEEDS=[
+  {id:'memnun',at:0,theme:{tr:'BİRİNİ MEMNUN ETME',en:'PLEASING OTHERS'},
+    origin:{who:'LUCIDA',frag:{tr:'“Onları kırmamak için kendimi…',en:'“So as not to hurt them, I…'}},
+    echoes:[
+      {who:'SILVANUS',line:{tr:'“…kendimi ikinci sıraya koydum, sonra üçüncü, sonra hiçbir yere.”',en:'“…put myself second, then third, then nowhere at all.”'}},
+      {who:'NOCTORNUS',line:{tr:'“…kendimi sildim ki kimse gitmesin — yine de gittiler.”',en:'“…erased myself so no one would leave — they left anyway.”'}}
+    ],
+    reveal:{tr:'Aynı yarım cümle iki ayrı ağızdan döndü: incinmemek için yok olmak. Oda bunu bir örüntü olarak tutuyor — belki senin de tanıdığın bir örüntü.',en:'The same half-sentence returned from two different mouths: vanishing to avoid being hurt. The chamber holds it as a pattern — perhaps one you know too.'}},
+  {id:'kontrol',at:2,theme:{tr:'HER ŞEYİ KONTROL ETME',en:'CONTROLLING EVERYTHING'},
+    origin:{who:'LUCIUS',frag:{tr:'“Düzen bozulmasın diye her şeyi…',en:'“To keep order from breaking, I held…'}},
+    echoes:[
+      {who:'LUNARIS',line:{tr:'“…her şeyi avucumda tuttum, ta ki avucum taşa dönene dek.”',en:'“…everything in my palm, until my palm turned to stone.”'}},
+      {who:'ORDOS',line:{tr:'“…her şeyi tekrar tekrar aynı kalıba döktüm. Güvenlik buydu, hapis de.”',en:'“…cast everything into the same mold, again and again. That was safety, and the prison.”'}}
+    ],
+    reveal:{tr:'Kontrol, korkunun kibar adıdır. Lucius’un yarım cümlesi kör sisteme kadar yankılandı: tutmak, bazen bırakmamaktır.',en:'Control is fear in polite clothes. Lucius’s unfinished line echoed all the way to the blind system: to hold can mean to never let go.'}},
+  {id:'yetersiz',at:5,theme:{tr:'YETERSİZLİK',en:'NOT ENOUGH'},
+    origin:{who:'NOCTORNUS',frag:{tr:'“Ne yaparsam yapayım yetmediği için…',en:'“Because nothing I did was ever enough, I…'}},
+    echoes:[
+      {who:'LUCIDA',line:{tr:'“…daha çok çalıştım, daha az uyudum, yine de boşluk doymadı.”',en:'“…worked more, slept less, and still the hollow stayed hungry.”'}},
+      {who:'AELIUS',line:{tr:'“…kanıt biriktirdim — ama kime kanıtladığımı çoktan unutmuştum.”',en:'“…gathered proof — but had long forgotten who I was proving it to.”'}}
+    ],
+    reveal:{tr:'“Yetmedi” cümlesi sahibini değiştirdikçe küçüldü: mesele başarı değil, içerideki o sönmeyen açlıktı.',en:'The sentence “not enough” shrank as it changed owners: it was never about achievement, but the hunger inside that never went out.'}},
+  {id:'terk',at:9,theme:{tr:'TERK EDİLME KORKUSU',en:'FEAR OF ABANDONMENT'},
+    origin:{who:'LUNARIS',frag:{tr:'“Gitmelerine dayanamadığım için önce ben…',en:'“Because I couldn’t bear them leaving, I first…'}},
+    echoes:[
+      {who:'NOCTORNUS',line:{tr:'“…önce ben soğudum, böylece terk edilmiş sayılmazdım.”',en:'“…went cold first, so it wouldn’t count as being left.”'}},
+      {who:'BAHAL',line:{tr:'“…önce ben yıktım, çünkü çöküşü beklemek çökmekten ağırdı.”',en:'“…broke it first, because waiting for the collapse was heavier than collapsing.”'}}
+    ],
+    reveal:{tr:'Terk edilmemek için terk eden gölge. Lunaris’in yarım cümlesi Bahal’ın elinde bir savunmaya dönüştü — tanıdık mı?',en:'The shadow that abandons so it won’t be abandoned. Lunaris’s half-line became, in Bahal’s hands, a defense — familiar?'}},
+  {id:'gorunmez',at:14,theme:{tr:'GÖRÜNMEZ OLMA',en:'BECOMING INVISIBLE'},
+    origin:{who:'SILVANUS',frag:{tr:'“Fark edilmek tehlikeliydi, o yüzden…',en:'“Being noticed was dangerous, so I…'}},
+    echoes:[
+      {who:'LUCIDA',line:{tr:'“…sesimi kıstım, sonra fikrimi, sonra varlığımı.”',en:'“…turned down my voice, then my opinion, then my presence.”'}},
+      {who:'ORDOS',line:{tr:'“…herkese benzedim ki kimse bana bakmasın. Mükemmel kamuflaj, mükemmel yalnızlık.”',en:'“…became like everyone so no one would look. Perfect camouflage, perfect loneliness.”'}}
+    ],
+    reveal:{tr:'Görünmezlik bir kalkandı; ama kalkanın arkasında kimsenin göremediği biri açlıktan soldu.',en:'Invisibility was a shield; but behind it, someone no one could see wilted from hunger.'}},
+  {id:'haklicik',at:20,theme:{tr:'HAKLI ÇIKMA İHTİYACI',en:'THE NEED TO BE RIGHT'},
+    origin:{who:'ORDOS',frag:{tr:'“Haklı çıkmazsam dağılacağım için…',en:'“Because I’d fall apart if I weren’t right, I…'}},
+    echoes:[
+      {who:'LUCIUS',line:{tr:'“…tartışmayı kazandım ve ilişkiyi kaybettim, her seferinde.”',en:'“…won the argument and lost the relationship, every time.”'}},
+      {who:'AELIUS',line:{tr:'“…haklılığı bir kale yaptım, sonra o kalede tek başıma kaldım.”',en:'“…made being right into a fortress, then stood alone inside it.”'}}
+    ],
+    reveal:{tr:'Haklı çıkma ihtiyacı, kırılganlığın zırhıdır. Ordos’un yarım cümlesi Aelius’a kadar geldi: kazanmak bazen yalnız kalmaktır.',en:'The need to be right is the armor of fragility. Ordos’s half-line reached even Aelius: to win can mean to be left alone.'}}
+];
+const EchoRoom={
+  load(){try{return JSON.parse(localStorage.getItem('it041_echoroom'))||{traced:[]}}catch(e){return{traced:[]}}},
+  store(o){try{localStorage.setItem('it041_echoroom',JSON.stringify(o))}catch(e){}},
+  T(o){return (o&&(o[GAMELANG]||o.en))||'';},
+  _surf(){var ms=(window.Library&&Library.milestones)?Library.milestones():0;return ECHO_SEEDS.filter(function(s){return ms>=(s.at||0);});},
+  show(){var tr=(GAMELANG==='tr');var st=this.load();var surf=this._surf();
+    var h='<p style="color:var(--dim);font-size:12.5px;line-height:1.65">'+(tr?'<b style="color:var(--moon)">Yankı Odası.</b> Bir karakterin yarım bıraktığı bir cümle, haftalar sonra başka birinin ağzında — biraz kaymış, biraz yanlış oturmuş — geri döner. İki ses arasındaki boşluk gölge çalışmasının arenasıdır. Yankının izini sür: bu söz <i>ilk</i> kimin yarım cümlesinden büyüdü?':'<b style="color:var(--moon)">The Echo Chamber.</b> A sentence one character left unfinished returns weeks later in another’s mouth — drifted, sitting slightly wrong. The gap between the two voices is the arena of shadow work. Trace the echo: whose unfinished words did it <i>first</i> grow from?')+'</p>';
+    if(!surf.length){h+='<p style="color:var(--dim)">'+(tr?'Oda henüz sessiz. Yolda derinleştikçe yankılar yüzeye çıkacak.':'The chamber is still quiet. As you go deeper, echoes will surface.')+'</p>';UI.doc('◌ '+(tr?'YANKI ODASI':'ECHO CHAMBER'),h);return;}
+    var day=Math.floor(Date.now()/864e5);
+    h+='<div style="margin-top:8px">';
+    surf.forEach(function(s){var done=st.traced.indexOf(s.id)>=0;var dr=s.echoes[(day+s.id.length)%s.echoes.length];
+      h+='<div style="border:1px solid var(--line);border-radius:6px;padding:10px;margin:7px 0;background:rgba(157,140,201,.06)">';
+      h+='<div style="font-size:10px;letter-spacing:.2em;color:var(--violet)">◌ '+(tr?'YÜZEYE ÇIKAN YANKI':'A SURFACED ECHO')+(done?(' · ✓ '+(tr?'izi sürüldü':'traced')):'')+'</div>';
+      h+='<p style="font-style:italic;color:var(--moon);font-size:13px;line-height:1.6;margin:6px 0">'+esc(EchoRoom.T(dr.line))+'</p>';
+      h+='<p style="font-size:10.5px;color:var(--dim)">— '+esc(dr.who)+(tr?' böyle söyledi':' said it like this')+'</p>';
+      if(done){h+='<p style="font-size:11.5px;color:var(--ink);line-height:1.55;margin-top:6px">'+(tr?'İlk söyleyen: ':'First spoken by: ')+'<b>'+esc(s.origin.who)+'</b> — “'+esc(EchoRoom.T(s.origin.frag))+'”</p><p style="font-size:11.5px;color:var(--accent);line-height:1.55">'+esc(EchoRoom.T(s.reveal))+'</p>';}
+      else{h+='<button class="btn v" style="font-size:11.5px;margin-top:4px" onclick="EchoRoom.trace(\''+s.id+'\')">◌ '+(tr?'yankının izini sür':'trace this echo')+'</button>';}
+      h+='</div>';});
+    h+='</div><p style="color:var(--dim);font-size:11px;margin-top:6px">'+(tr?'İzini sürdüğün: ':'Traced: ')+st.traced.length+'/'+ECHO_SEEDS.length+' — '+(tr?'evrenin derin hafızası':'the universe’s deep memory')+'</p>';
+    UI.doc('◌ '+(tr?'YANKI ODASI':'ECHO CHAMBER'),h);},
+  trace(id){var tr=(GAMELANG==='tr');var s=null;for(var i=0;i<ECHO_SEEDS.length;i++)if(ECHO_SEEDS[i].id===id)s=ECHO_SEEDS[i];if(!s)return;
+    var pool=['LUCIDA','LUCIUS','SILVANUS','NOCTORNUS','LUNARIS','BAHAL','AELIUS','ORDOS'];
+    var opts=[s.origin.who];pool.filter(function(p){return p!==s.origin.who;}).sort(function(){return Math.random()-0.5;}).slice(0,3).forEach(function(p){opts.push(p);});
+    opts.sort(function(){return Math.random()-0.5;});
+    var dr=s.echoes[0];
+    var h='<p style="color:var(--dim);font-size:12px">'+(tr?'Bu yankı:':'This echo:')+'</p><p style="font-style:italic;color:var(--moon);line-height:1.6">'+esc(EchoRoom.T(dr.line))+'</p><p style="font-size:11px;color:var(--dim)">— '+esc(dr.who)+'</p><p style="font-size:12.5px;color:var(--ink);margin-top:8px">'+(tr?'Bu söz <b>ilk</b> kimin yarım cümlesinden büyüdü?':'Whose unfinished words did this <b>first</b> grow from?')+'</p>';
+    opts.forEach(function(o){h+='<button class="choice" onclick="EchoRoom.answer(\''+id+'\',\''+o+'\')">'+esc(o)+'</button>';});
+    h+='<button class="btn ghost" style="margin-top:6px" onclick="EchoRoom.show()">↩ '+(tr?'geri':'back')+'</button>';
+    UI.doc('◌ '+(tr?'YANKININ İZİ':'TRACE THE ECHO'),h);},
+  answer(id,who){var tr=(GAMELANG==='tr');var s=null;for(var i=0;i<ECHO_SEEDS.length;i++)if(ECHO_SEEDS[i].id===id)s=ECHO_SEEDS[i];if(!s)return;
+    if(who===s.origin.who){var st=this.load();if(st.traced.indexOf(id)<0){st.traced.push(id);this.store(st);try{S.insight=(S.insight||0)+3;if(typeof save==='function')save();if(window.refreshHud)refreshHud();}catch(e){}}
+      try{if(window.Mirror&&Mirror.remember)Mirror.remember('aelius','A traveler traced an echo back to '+s.origin.who+' — pattern: '+EchoRoom.T(s.theme));}catch(e){}
+      UI.toast('◌ '+(tr?'İz sürüldü. Evrenin hafızasına bir örüntü daha eklendi.':'Traced. One more pattern joined the chamber’s memory.'),5200);this.show();}
+    else{UI.toast('◌ '+(tr?'Bu ses başkasının. Yankı daha derinden geliyor — tekrar dinle.':'That voice is another’s. The echo comes from deeper — listen again.'),5200);}}
+};
+if(typeof window!=='undefined')window.EchoRoom=EchoRoom;
 const SideQuests={
   show(){
     var L=(typeof GAMELANG!=='undefined'?GAMELANG:'en'),tr=(L==='tr');
