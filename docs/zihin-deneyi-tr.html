@@ -303,7 +303,7 @@
   <p>Herhangi bir kapının açıldığı tek zihin haritası <b style="color:var(--moon)">seninkidir</b>. Bahal'ın haritası yalnızca fener. Lunaris yanında yürüyor. Diskler, maskeler, cadı, yangın — onlar hep senindi.</p>
   <p style="color:var(--dim);font-size:12.5px"><b style="color:var(--accent)">Kitapları okumuş olman gerekmez.</b> İhtiyacın olan her şey burada — plaketlerde, karakterlerde, taşlarda. Tek cümle tüm amacı taşır: <i style="color:var(--moon)">kendi zihnini keşfederek evrenin nasıl çalıştığını anlamak.</i> Oynadıkça zihin haritan çizilir; sonunda onu gökyüzünde okursun. Yol boyunca içindeki yedi arketip tartılır; amaç onları dengelemek. Sonunda herkese ikinci kitap açılır — ama içinde dengeye ulaşana MİMAR MODU, yani kendi evrenini kurma, açılır.</p>
   <p style="text-align:center;color:var(--dim);font-size:12px;">WASD hareket · SHIFT koş · fare ile bakış · E etkileşim · J günlük · M harita<br>Dokunmatik: sol çubukla hareket, sağ tarafı sürükleyerek bak.<br><br><b style="color:var(--moon)">✎ Başlamadan:</b> yanına <b style="color:var(--accent)">kâğıt, kalem ve bir defter</b> al. Bu yolculuk sana gerçek-hayat görevleri verir ve yazmanı ister — bunları elle, yavaşça yapmak deneyimi bütünler.<br><br>Yazdıkların bu cihazda kalır. <b style="color:var(--accent)">İlerleme kodu</b> ilerlemeni cihazlar arası taşır; eşzamanlı modda yolcular haritada birbirini görür — hepsi isteğe bağlı, hepsi MENÜ'de.</p>
-  <p style="text-align:center;color:#3a4154;font-size:10px;letter-spacing:.2em;margin-top:12px">◈ KURULUŞ 15 HAZİRAN 2026 · b58 · <span style="color:var(--accent)">zihin artık ışıktan karanlığa diziliyor — Lucida uzak ışığa en yakın, ardından Lucius, sonra Lunaris; Aelius merkezde rampalı bir tepede; Silvanus deresinin yanında; Bahal ve hepsinin en dibinde Noctornus'un mağarası karanlık güneye doğru iniyor. Mouse artık çok daha hızlı ve keskin dönüyor</span> · <span style="color:#586074">eskiyse sayfayı sert yenile</span></p>
+  <p style="text-align:center;color:#3a4154;font-size:10px;letter-spacing:.2em;margin-top:12px">◈ KURULUŞ 15 HAZİRAN 2026 · b60 · <span style="color:var(--accent)">harita artık Freud'un buzdağı gibi okunuyor — yukarıda BİLİNÇ ve uzak ışık, aşağıda karanlığa batan BİLİNÇALTI, eşikte savunma mekanizmaları hattı; lejant yoldan çekildi. Telefonda menüde artık net bir ✕ KAPAT var. Noctornus, 'trickster' değil Noctornus olarak anılıyor</span> · <span style="color:#586074">eskiyse sayfayı sert yenile</span></p>
   <div style="text-align:center;margin-top:18px;">
     <input id="plName" maxlength="14" placeholder="yolcu adın (isteğe bağlı — diğer yolculara görünür)" style="width:min(340px,90%);background:#070910;border:1px solid var(--line);color:var(--accent);padding:8px 10px;font-family:inherit;font-size:12px;border-radius:3px;margin-bottom:10px;"><br>
     <button class="btn" id="startBtn" onclick="Game.start()">Zihnine gir</button>
@@ -347,6 +347,7 @@
 <style>@media (pointer:coarse){#jbtn{display:flex !important;}}</style>
 <div id="menuBtns">
   <div id="menuPanel" style="display:none;">
+<button class="mini" onclick="document.getElementById('menuPanel').style.display='none'" style="grid-column:1/-1;background:rgba(48,16,16,.92);border-color:var(--warn);color:#ffb4b4;font-size:12px;padding:11px;position:sticky;top:0;z-index:3">✕ KAPAT · CLOSE</button>
 <div style="grid-column:1/-1;font-size:8.5px;letter-spacing:.25em;color:var(--violet);opacity:.62;margin:9px 2px 2px;text-transform:uppercase">✦ YOLCULUK</div>
 <button class="mini" onclick="Library.show()">📖 ZİHİN DENEYİ</button>
 <button class="mini" onclick="Quest.show()">◇ İÇ ÇALIŞMA</button>
@@ -3686,7 +3687,7 @@ const REALMS=[
  {k:'bahal',n:{tr:"BAHAL-ROMA DENEYİ",en:"THE BAHAL-ROME EXPERIMENT"},arch:{tr:'Gölge',en:'The Shadow'},ch:[8,14],loc:{tr:'Seni takip eden gölge',en:'The shadow that follows you'}},
  {k:'lucida',n:{tr:"LUCIDA'NIN ŞEHRİ",en:"LUCIDA'S CITY"},arch:{tr:'Aydınlık / Anima',en:'Clarity / Anima'},ch:[15,21],loc:{tr:'Çalan ankesör',en:'The ringing payphone'}},
  {k:'lucius',n:{tr:"LUCIUS'UN PLAZASI",en:"LUCIUS'S PLAZA"},arch:{tr:'Persona / Manipülatör',en:'Persona / The Manipulator'},ch:[22,28],loc:{tr:'Takım elbiseli adam',en:'The man in the pressed suit'}},
- {k:'noct',n:{tr:"NOCTORNUS GECESİ",en:"NOCTORNUS NIGHT"},arch:{tr:'Trickster / İsyancı',en:'Trickster / Rebel'},ch:[29,35],loc:{tr:'Gecenin sesi',en:'The voice of the night'}},
+ {k:'noct',n:{tr:"NOCTORNUS GECESİ",en:"NOCTORNUS NIGHT"},arch:{tr:'Noctornus / İsyancı',en:'Noctornus / Rebel'},ch:[29,35],loc:{tr:'Gecenin sesi',en:'The voice of the night'}},
  {k:'silvanus',n:{tr:"SILVANUS'UN KARAVANI",en:"SILVANUS'S CARAVAN"},arch:{tr:'Bilge / Münzevi',en:'Sage / Hermit'},ch:[36,42],loc:{tr:'Karavan',en:'The caravan'}},
  {k:'aelius',n:{tr:"AELIUS SEANSI",en:"THE AELIUS SESSION"},arch:{tr:'Üst-Benlik / Anlatıcı',en:'Self / The Narrator'},ch:[43,49],loc:{tr:'Üst katman (Yükseliş Taşı)',en:'The upper layer (Ascension Stone)'}}
 ];
@@ -6638,18 +6639,39 @@ if(HAS3D)(function(){
       var lp=new THREE.PointLight(0xffd080,.42,13,2);lp.position.set(lx,4.2,z+lz);scene.add(lp);});}
     label((GAMELANG==='tr'?'MAHALLE — GECE':'THE BLOCK — NIGHT'),x,z+19,3,.7);
   }
+  var AEL={x:215,z:165,steps:[]};
+  function buildAeliusHill(x,z,name){
+    AEL.x=x;AEL.z=z;AEL.steps=[];
+    var N=10,baseR=18,topR=3.6,stepH=0.92;
+    for(var i=0;i<N;i++){
+      var r=baseR-(baseR-topR)*(i/(N-1)), y=stepH*(i+1);
+      AEL.steps.push({r:r,y:y});
+      var disc=new THREE.Mesh(new THREE.CylinderGeometry(r,r+0.7,stepH+0.06,36),std((i%2)?0x2c2e38:0x33353f,{roughness:.95}));
+      disc.position.set(x,y-stepH/2,z);disc.castShadow=true;disc.receiveShadow=true;scene.add(disc);
+      if(i%3===0){var rl=new THREE.PointLight(0xffe0a0,.3,22,2);rl.position.set(x,y+1.2,z);scene.add(rl);}
+    }
+    var topY=stepH*N;
+    var ring=new THREE.Mesh(new THREE.TorusGeometry(1.6,.16,10,26),std(0x1a1f2c,{emissive:0xbcd0f0,emissiveIntensity:.7,metalness:.4,roughness:.4}));ring.position.set(x,topY+1.8,z);scene.add(ring);W3._portals.push(ring);
+    var pad=new THREE.Mesh(new THREE.CylinderGeometry(2.4,2.4,.3,24),std(0x10131f,{emissive:0xbcd0f0,emissiveIntensity:.16}));pad.position.set(x,topY+.16,z);scene.add(pad);
+    var pl=new THREE.PointLight(0xbcd0f0,.95,26,2);pl.position.set(x,topY+2.6,z);scene.add(pl);
+    var gl=new THREE.PointLight(0xffe8b0,.7,42,2);gl.position.set(x,topY+5,z);scene.add(gl);
+    try{var fig=makeChar('aelius',1);fig.g.position.set(x+1.7,topY+0.42,z+1.2);fig.g.rotation.y=-.6;scene.add(fig.g);}catch(e){}
+    var _ch=new THREE.Group();
+    var _chb=new THREE.Mesh(new THREE.SphereGeometry(.62,14,12),std(0x0a0a10,{emissive:0x3a0a12,emissiveIntensity:.5,roughness:.7}));_chb.scale.set(1,1.3,1);_ch.add(_chb);
+    var _che=new THREE.Mesh(new THREE.SphereGeometry(1.05,14,12),new THREE.MeshBasicMaterial({color:0x6a1020,transparent:true,opacity:.18,blending:THREE.AdditiveBlending,depthWrite:false}));_ch.add(_che);
+    [[-.18,.2,.5],[.18,.2,.5]].forEach(function(e){var ey=new THREE.Mesh(new THREE.SphereGeometry(.08,8,8),std(0x100000,{emissive:0xff2a2a,emissiveIntensity:2}));ey.position.set(e[0],e[1],e[2]);_ch.add(ey);});
+    var _chl=new THREE.PointLight(0xff3030,0,11,2);_ch.add(_chl);
+    _ch.visible=false;scene.add(_ch);
+    W3._aelChaser={g:_ch,light:_chl,active:false,speed:5.4};
+    label(name,x,z,topY+3.4,.85);
+    W3.PORTALS.push({k:'aelius',x:x,z:z,r:4.2,name:name,house:true});
+  }
+  W3._aelOpen=false;W3.aeliusGroundY=function(px,pz){if(!W3._aelOpen)return 0;var dx=px-AEL.x,dz=pz-AEL.z,d=Math.hypot(dx,dz);for(var i=AEL.steps.length-1;i>=0;i--){if(d<=AEL.steps[i].r)return AEL.steps[i].y;}return 0;};
   buildCity('lucida',95,60,(GAMELANG==='tr'?"LUCIDA'NIN ŞEHRİ ✦":"LUCIDA'S CITY ✦"));
   buildCity('lucius',165,92,(GAMELANG==='tr'?"LUCIUS'UN PLAZASI ✦":"LUCIUS'S PLAZA ✦"));
   buildNoctCave(320,285,(GAMELANG==='tr'?'NOCTORNUS GECESİ — MAĞARA ☾':"NOCTORNUS'S NIGHT — THE CAVE ☾"));
   W3.PORTALS.push({k:'silvanus',x:L.caravan.x,z:L.caravan.z+4,r:3.6,name:(GAMELANG==='tr'?"SILVANUS'UN KARAVANI ☽":"SILVANUS'S CARAVAN ☽"),house:true});
-  buildCity('aelius',215,165,(GAMELANG==='tr'?'AELIUS SEANSI ✦':'THE AELIUS SESSION ✦'));
-  (function(){try{var hx=215,hz=165;
-    var mound=new THREE.Mesh(new THREE.CylinderGeometry(11,15.5,5.5,24),std(0x2a2c34,{roughness:.96}));mound.position.set(hx,2.6,hz-4);scene.add(mound);
-    var top=new THREE.Mesh(new THREE.CylinderGeometry(9.5,11,1.2,24),std(0x32343e,{roughness:.95}));top.position.set(hx,5.5,hz-4);scene.add(top);
-    var ramp=new THREE.Mesh(new THREE.BoxGeometry(7.5,.6,18),std(0x33353f,{roughness:.95}));ramp.position.set(hx,2.4,hz+9);ramp.rotation.x=-0.26;scene.add(ramp);
-    [[hx-4,hz+3],[hx+4,hz+3]].forEach(function(p){cyl(.12,.14,5.5,std(0x1a1a20,{roughness:.6}),p[0],3,p[1]);var hd=new THREE.Mesh(new THREE.SphereGeometry(.3,10,8),std(0x1a160c,{emissive:0xffe0a0,emissiveIntensity:.85}));hd.position.set(p[0],5.8,p[1]);scene.add(hd);var lp=new THREE.PointLight(0xffe0a0,.5,16,2);lp.position.set(p[0],5.6,p[1]);scene.add(lp);});
-    var gl=new THREE.PointLight(0xffe8b0,.8,30,2);gl.position.set(hx,9,hz-4);scene.add(gl);
-  }catch(e){}})();
+  buildAeliusHill(215,165,(GAMELANG==='tr'?'AELIUS SEANSI ✦':'THE AELIUS SESSION ✦'));
 
   buildHood(268,255);
   buildHood(372,150);
@@ -6840,10 +6862,33 @@ if(HAS3D)(function(){
       }else walkT+=dt*1.2;
     }
     /* zıplama */
-    if(keys['space']&&jy<=0&&Game.running&&!Game.modal){vy=5.6;}
-    if(vy!==0||jy>0){jy+=vy*dt;vy-=15*dt;if(jy<=0){jy=0;vy=0;}}
+    var _gy=(W3.aeliusGroundY?W3.aeliusGroundY(P.px,P.pz):0);
+    if(keys['space']&&jy<=_gy+0.06&&Game.running&&!Game.modal){vy=6.2;}
+    if(vy!==0||jy>_gy+0.001||_gy>0){jy+=vy*dt;vy-=16*dt;if(jy<_gy){jy=_gy;vy=0;}}
+    if(_gy>jy&&_gy-jy<0.34){jy=_gy;if(vy<0)vy=0;}
     S.heading=Math.PI-meshAng; /* v8: minimap oku gidiş yönüyle aynı (ayna düzeltmesi) */
     player.g.position.set(P.px,jy+Math.abs(Math.sin(walkT))*.05,P.pz);
+    /* b59: Aelius tirmanisi — kilit (onceki arketip) + kovalamaca (kusbakisi kacis) */
+    try{ if(typeof AEL!=='undefined'&&AEL.steps&&AEL.steps.length){
+      if(W3._aelT===undefined)W3._aelT=0; W3._aelT+=dt;
+      if(W3._aelT>0.6){W3._aelT=0; var _ai=(window.REALMS||[]).findIndex(function(r){return r.k==='aelius';}); W3._aelOpen=(_ai<=0)||!!(window.Realms&&Realms.open(_ai));}
+      var _adx=P.px-AEL.x,_adz=P.pz-AEL.z,_ad=Math.hypot(_adx,_adz),_baseR=AEL.steps[0].r;
+      if(_ad<_baseR+3&&!W3._aelOpen&&!Game.modal&&(W3._aelLockT===undefined||t-W3._aelLockT>6)){W3._aelLockT=t;try{if(window.UI&&UI.toast)UI.toast(GAMELANG==='tr'?'AELIUS TEPESİ — tırmanmak için önce Silvanus arketipini (önceki adım) bütünle.':'THE AELIUS HILL — integrate Silvanus (the previous archetype) before you can climb.',3600);}catch(e){}}
+      var _onHill=W3._aelOpen&&_ad<_baseR+1.5&&_gy>0.4;
+      var _ch=W3._aelChaser;
+      if(_ch){
+        if(_onHill&&!_ch.active){_ch.active=true;_ch.g.visible=true;_ch.g.position.set(AEL.x+(Math.random()-.5)*5,0.6,AEL.z+11);try{if(window.FX&&FX.sfx)FX.sfx('error');}catch(e){}}
+        if(_ch.active){
+          var _cx=_ch.g.position.x,_cz=_ch.g.position.z,_dxx=P.px-_cx,_dzz=P.pz-_cz,_dl=Math.hypot(_dxx,_dzz)||1,_sp=_ch.speed*dt;
+          _cx+=_dxx/_dl*_sp;_cz+=_dzz/_dl*_sp;var _cgy=W3.aeliusGroundY(_cx,_cz);
+          _ch.g.position.set(_cx,_cgy+0.7+Math.sin(t*5)*0.12,_cz);_ch.g.rotation.y=Math.atan2(_dxx,_dzz);_ch.light.intensity=.7+Math.sin(t*8)*.3;
+          if(Math.hypot(P.px-_cx,P.pz-_cz)<1.5&&jy>0.3){vy=-3.0;try{var _fl=document.getElementById('dmg');if(_fl){_fl.style.opacity=.5;setTimeout(function(){_fl.style.opacity=0;},180);}if(window.FX&&FX.sfx)FX.sfx('error');}catch(e){}_ch.g.position.set(AEL.x+(Math.random()-.5)*6,0.6,AEL.z+11);}
+          var _topY=AEL.steps[AEL.steps.length-1].y;
+          if(jy>=_topY-0.2){_ch.active=false;_ch.g.visible=false;if(!W3._aelEscaped){W3._aelEscaped=true;try{if(window.UI&&UI.toast)UI.toast(GAMELANG==='tr'?'✦ Zirvedesin. Kovalayanı geride bıraktın — Aelius seni bekliyor.':'✦ Summit reached. You outran it — Aelius awaits.',4500);if(window.FX&&FX.reward)FX.reward();}catch(e){}}}
+          if(!_onHill&&jy<0.3){_ch.active=false;_ch.g.visible=false;}
+        }
+      }
+    }}catch(e){}
     player.g.rotation.y=meshAng;
     const moving=Math.abs(mx)+Math.abs(mz)>0.0001;
     if(moving){var sw=Math.sin(walkT)*(running?.85:.55);
@@ -6882,7 +6927,7 @@ if(HAS3D)(function(){
         try{player.g.visible=false;}catch(e){}
         fovKick+= ((running?5:0)-fovKick)*.08;
         camera.fov=72+fovKick;camera.updateProjectionMatrix();
-        var _eh=1.74,_fpmv=moving?1:.32;
+        var _eh=jy+1.74,_fpmv=moving?1:.32;
         camera.position.lerp(new THREE.Vector3(P.px,_eh,P.pz),.4);
         camera.position.x+=Math.sin(t*1.9)*0.012*_fpmv;
         camera.position.y+=Math.sin(t*2.5+1.1)*0.010*_fpmv;
@@ -6896,12 +6941,12 @@ if(HAS3D)(function(){
       const cd=Cam.dist,cp=Cam.pitch;
       camera.position.lerp(new THREE.Vector3(
         P.px+Math.sin(Cam.yaw)*Math.cos(cp)*cd,
-        Math.max(.55,1.6+Math.sin(cp)*cd), /* v8: gökyüzüne bakarken yere batma */
+        Math.max(.55,jy+1.6+Math.sin(cp)*cd), /* v8: gökyüzüne bakarken yere batma */
         P.pz+Math.cos(Cam.yaw)*Math.cos(cp)*cd),.18);
       var _mv=moving?1:0.32; /* el-kamerası hissi: yürürken daha belirgin, dururken sakin */
       camera.position.x+=Math.sin(t*1.7)*0.013*_mv;
       camera.position.y+=Math.sin(t*2.3+1.1)*0.011*_mv;
-      camera.lookAt(P.px,cp<0?1.9-cp*9:1.9,P.pz); /* v8: aşağı eğimde bakış yukarı kayar → gökyüzü görünür */
+      camera.lookAt(P.px,jy+(cp<0?1.9-cp*9:1.9),P.pz); /* v8: aşağı eğimde bakış yukarı kayar → gökyüzü görünür */
       camera.rotation.z+=Math.sin(t*1.25)*0.007*_mv; /* hafif yalpalama */
       moonLight.position.set(P.px+130,200,P.pz-60);
       mlTarget.position.set(P.px,0,P.pz);
@@ -7152,6 +7197,18 @@ function drawBigMap(){
   c.width=Math.min(innerWidth*.92,980);c.height=c.width*WZ/WX;if(c.height>innerHeight*.9){c.height=innerHeight*.9;c.width=c.height*WX/WZ;}
   const ctx=c.getContext('2d'),sx=c.width/WX,sz=c.height/WZ;
   drawMiniBase(ctx,c.width,c.height);
+  (function(){var g=ctx.createLinearGradient(0,0,0,c.height);
+    g.addColorStop(0,'rgba(150,200,255,.17)');g.addColorStop(.30,'rgba(120,170,235,.05)');g.addColorStop(.55,'rgba(10,14,26,0)');g.addColorStop(1,'rgba(6,8,16,.36)');
+    ctx.fillStyle=g;ctx.fillRect(0,0,c.width,c.height);
+    var wy=c.height*0.30;ctx.save();ctx.strokeStyle='rgba(127,212,193,.45)';ctx.lineWidth=1.4;ctx.setLineDash([7,6]);ctx.beginPath();ctx.moveTo(8,wy);ctx.lineTo(c.width-8,wy);ctx.stroke();ctx.setLineDash([]);ctx.restore();
+    ctx.textAlign='left';ctx.font='9px monospace';ctx.fillStyle='rgba(127,212,193,.7)';ctx.fillText(tr?'— SAVUNMA MEKANİZMALARI HATTI —':'— THE LINE OF DEFENCE MECHANISMS —',12,wy-5);
+    ctx.fillStyle='rgba(180,205,240,.05)';ctx.beginPath();ctx.moveTo(c.width/2,wy-c.height*0.16);ctx.lineTo(c.width/2+c.width*0.33,c.height);ctx.lineTo(c.width/2-c.width*0.33,c.height);ctx.closePath();ctx.fill();
+    ctx.textAlign='center';
+    ctx.font='bold 15px monospace';ctx.fillStyle='rgba(210,232,255,.92)';ctx.fillText(tr?'◇ BİLİNÇ':'◇ CONSCIOUSNESS',c.width/2,24);
+    ctx.font='9px monospace';ctx.fillStyle='rgba(170,200,235,.6)';ctx.fillText(tr?'uzak ışık · arınma · anlatıcı':'the far light · clarity · the narrator',c.width/2,38);
+    ctx.font='bold 14px monospace';ctx.fillStyle='rgba(150,140,180,.85)';ctx.fillText(tr?'BİLİNÇALTI':'THE SUBCONSCIOUS',c.width/2,c.height*0.66);
+    ctx.font='9px monospace';ctx.fillStyle='rgba(140,130,170,.55)';ctx.fillText(tr?'gölge · mağara · en dipler':'the shadow · the cave · the depths',c.width/2,c.height*0.66+14);
+    ctx.textAlign='left';})();
   function lbl(txt,x,y,color,size){size=size||10;ctx.font=size+'px monospace';ctx.textAlign='center';var w=ctx.measureText(txt).width;ctx.fillStyle='rgba(4,6,12,.66)';ctx.fillRect(x-w/2-3,y-size,w+6,size+4);ctx.fillStyle=color;ctx.fillText(txt,x,y-2);}
   ZONES.forEach(z=>lbl(z.name,z.x*sx,z.z*sz-z.r*sx-2,'#aeb8d4',11));
   lbl(tr?'AYNALAR KAPISI':'GATE OF MIRRORS',L.gate.x*sx,L.gate.z*sz-10,'#c9b6e6',10);
@@ -7172,7 +7229,7 @@ function drawBigMap(){
   if(wp){ctx.fillStyle='#cdb878';ctx.beginPath();ctx.arc(wp.x*sx,wp.z*sz,5,0,7);ctx.fill();lbl(tr?'◆ HEDEF':'◆ OBJECTIVE',wp.x*sx,wp.z*sz+16,'#e3c878',9);}
   [['echoChamber','◌',(tr?'Yankı Odası':'Echo Chamber'),'#b9a8e8'],['lucidaMirror','◑',(tr?'Lucida Aynası':'Lucida’s Mirror'),'#9fd0d8'],['crackedDoor','⟡',(tr?'Yarık Kapı':'Cracked Door'),'#b9a8e8'],['emptyDoor','▢',(tr?'Boş Oda':'Empty Room'),'#9aa6bd']].forEach(function(it){var Lp=L[it[0]];if(!Lp)return;var X=Lp.x*sx,Z=Lp.z*sz;ctx.fillStyle=it[3];ctx.font='13px monospace';ctx.textAlign='center';ctx.fillText(it[1],X,Z+4);lbl(it[2],X,Z-9,it[3],9);});
   ctx.fillStyle='#e8e4d4';ctx.beginPath();ctx.arc(S.px*sx,S.pz*sz,5,0,7);ctx.fill();lbl(tr?'SEN':'YOU',S.px*sx,S.pz*sz-10,'#7fd4c1',10);
-  drawMapLegend(ctx,tr);
+  drawMapLegend(ctx,tr,c.height);
   ctx.textAlign='center';
   var _c=(window.__mmP||[]).length;
   ctx.font='12px monospace';ctx.fillStyle=_c?'rgba(230,195,110,.95)':'#6b7689';
@@ -7180,14 +7237,15 @@ function drawBigMap(){
   ctx.fillText(ctxt,c.width/2,c.height-30);
   ctx.fillStyle='#6b7689';ctx.font='10px monospace';ctx.fillText(tr?'— KAPATMAK İÇİN [M] —':'— PRESS [M] TO CLOSE —',c.width/2,c.height-12);
 }
-function drawMapLegend(ctx,tr){
+function drawMapLegend(ctx,tr,H){
   const items=[['#7fd4c1',tr?'karakterler':'characters'],['rgba(110,210,220,.95)',tr?'ayna-ajanları':'mirror-agents'],['rgba(230,195,110,.95)',tr?'şu anki yolcular':'travelers now'],['#cdb878',tr?'evler / hedef':'houses / objective'],['rgba(157,140,201,.7)',tr?'ritüeller & izler':'rites & traces']];
   const pad=10,lh=15,bw=176,bh=pad*2+lh*items.length+16;
-  ctx.fillStyle='rgba(4,6,12,.74)';ctx.strokeStyle='rgba(127,212,193,.35)';ctx.lineWidth=1;
-  ctx.fillRect(10,10,bw,bh);ctx.strokeRect(10,10,bw,bh);
+  var lx=10, ly=(H?H-bh-46:10);
+  ctx.fillStyle='rgba(4,6,12,.82)';ctx.strokeStyle='rgba(127,212,193,.35)';ctx.lineWidth=1;
+  ctx.fillRect(lx,ly,bw,bh);ctx.strokeRect(lx,ly,bw,bh);
   ctx.textAlign='left';ctx.font='10px monospace';ctx.fillStyle='#aeb8d4';
-  ctx.fillText(tr?'EVREN HARİTASI':'UNIVERSE MAP',10+pad,10+pad+8);
-  items.forEach((it,i)=>{const y=10+pad+24+i*lh;ctx.fillStyle=it[0];ctx.beginPath();ctx.arc(10+pad+5,y-3,4,0,7);ctx.fill();ctx.fillStyle='#c2cadf';ctx.fillText(it[1],10+pad+16,y);});
+  ctx.fillText(tr?'EVREN HARİTASI':'UNIVERSE MAP',lx+pad,ly+pad+8);
+  items.forEach((it,i)=>{const y=ly+pad+24+i*lh;ctx.fillStyle=it[0];ctx.beginPath();ctx.arc(lx+pad+5,y-3,4,0,7);ctx.fill();ctx.fillStyle='#c2cadf';ctx.fillText(it[1],lx+pad+16,y);});
 }
 document.getElementById('bigmapWrap').addEventListener('click',()=>Game.toggleMap());
 document.getElementById('bigmap').addEventListener('click',function(ev){const c=this,rect=c.getBoundingClientRect();const wx=(ev.clientX-rect.left)/rect.width*WX,wz=(ev.clientY-rect.top)/rect.height*WZ;let hit=null,best=1e9;(window.__traces||[]).forEach(t=>{if(t.x===undefined)return;const d=Math.hypot(wx-t.x,wz-t.z);if(d<best){best=d;hit=t;}});if(hit&&best<WX*0.05){ev.stopPropagation();UI.toast('◈ '+hit.mask+': "'+hit.text+'"'+(hit.ack>0?'  ◇'+hit.ack:''),6000);}});
