@@ -99,3 +99,18 @@ It is a game. It is an ARG. It is, depending on which door you take, a mirror.
 <sub>DO·LOON·AI EXPRESS series · L. BAHAL · LUNARIS · AELIUS IGNIS · O.V. · lunarisbahal</sub>
 
 </div>
+
+---
+
+## ✦ SIBLING TRANSMISSIONS
+
+This kernel is one of three linked repositories:
+
+- **▶ Play the experiment** - [the-mind-experiment](https://github.com/lunarisbahal/the-mind-experiment) · [EN](https://lunarisbahal.github.io/the-mind-experiment/) · [TR](https://lunarisbahal.github.io/the-mind-experiment/zihin-deneyi-tr.html)
+- **▶ The book & live signals** - [dolunay-ekspres](https://github.com/lunarisbahal/dolunay-ekspres)
+- **▶ This kernel** - lore, canon, evidence.
+
+Deeper in: [`finale.md`](finale.md) · [`evidence/ordos_veritas.md`](evidence/ordos_veritas.md) · [`TRANSMISSION.md`](TRANSMISSION.md)
+
+*The law: read everything once in reverse. — O.V.*
+
